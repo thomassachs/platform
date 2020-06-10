@@ -24,4 +24,8 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/account', 'HomeController@index')->name('account');
+
+Route::get('/instructor', 'HomeController@instructor');
+
+Route::get('/course/{courseName}', 'PagesController@coursePage');
