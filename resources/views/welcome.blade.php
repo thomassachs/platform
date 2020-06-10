@@ -64,6 +64,12 @@
         </style>
     </head>
     <body>
+        <li><a href="{{ url('locale/en') }}" ><i class="fa fa-language"></i> EN</a></li>
+
+        <li><a href="{{ url('locale/de') }}" ><i class="fa fa-language"></i> DE</a></li>
+
+        <h1>{{ __('messages.welcome') }}</h1>
+
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
