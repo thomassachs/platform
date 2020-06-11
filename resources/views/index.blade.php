@@ -2,10 +2,6 @@
 
 @section('content')
 
-
-<div class="">
-    this is the course {{$courseName}}
-</div>
-
+this is the front page
 
 @endsection('content')
