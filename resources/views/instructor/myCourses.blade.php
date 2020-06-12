@@ -4,8 +4,8 @@
 
 @include('instructor.sidebar')
 
+<p>hello</p>
 
-
-
+</div>
 
 @endsection('instructorContentcontent')
