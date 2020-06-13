@@ -30,6 +30,8 @@ Route::get('/instructor', 'InstructorController@instructor');
 
 Route::get('/instructor/mycourses', 'InstructorController@myCourses');
 
+Route::get('/instructor/createcourse', 'InstructorController@createCourse');
+
 Route::get('/course/{courseName}', 'PagesController@coursePage');
 
 Route::resource('courses', 'CoursesController');

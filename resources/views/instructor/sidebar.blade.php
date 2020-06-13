@@ -9,9 +9,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/instructor/createcourse">
                   <span data-feather="file"></span>
-                  Orders
+                  Create a new Course
                 </a>
               </li>
               <li class="nav-item">
