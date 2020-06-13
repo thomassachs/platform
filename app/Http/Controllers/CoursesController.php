@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Course;
+use Illuminate\Support\Facades\Auth;
 
 class CoursesController extends Controller
 {
@@ -34,7 +36,24 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => ['required', 'unique:courses', 'max:255'],
+            'description' => 'required',
+        ]);
+
+        // Create Course
+        $course = new Course;
+        $course->title = $request->input('title');
+        $course->description = $request->input('description');
+        $course->author_id = Auth::id();
+        $course->language = 'deutsch';
+        $course->game = 'deutsch';
+        $course->status = 'inprogress';
+        $course->price = 0;
+        $course->sale_price = 0;
+        $course->save();
+
+        return redirect('/instructor/mycourses')->with('success', 'You succesfully created a new Course!');
     }
 
     /**
