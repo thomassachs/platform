@@ -32,6 +32,8 @@ Route::get('/instructor/mycourses', 'InstructorController@myCourses');
 
 Route::get('/instructor/createcourse', 'InstructorController@createCourse');
 
+Route::get('/instructor/edit/{id}', 'InstructorController@editCourse');
+
 Route::get('/course/{courseName}', 'PagesController@coursePage');
 
 Route::resource('courses', 'CoursesController');

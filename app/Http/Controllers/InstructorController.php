@@ -56,5 +56,19 @@ class InstructorController extends Controller
         return redirect('/instructor/mycourses')->with('success', 'You succesfully created a new Course!');
     }
 
+    public function editCourse($id)
+    {
+        $course = Course::find($id);
+
+        // check if the guy who wants to edit a course is the author of the course
+        if( $course->author_id == Auth::id()){
+            echo "true";
+            return view('instructor.editCourse')->with('course', $course);
+        }else{
+            // if somebody tries to edit a course he doesnt own he gets redirected to the mycourses page
+            return redirect('/instructor/mycourses');
+        }
+    }
+
 
 }

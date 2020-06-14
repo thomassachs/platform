@@ -36,24 +36,26 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
+        // validate the input of the instructor
         $this->validate($request, [
             'title' => ['required', 'unique:courses', 'max:255'],
-            'description' => 'required',
+            'language' => 'required',
+            'game' => 'required',
         ]);
 
         // Create Course
         $course = new Course;
         $course->title = $request->input('title');
-        $course->description = $request->input('description');
+        $course->description = '';
         $course->author_id = Auth::id();
-        $course->language = 'deutsch';
-        $course->game = 'deutsch';
+        $course->language = $request->input('language');
+        $course->game = $request->input('game');
         $course->status = 'inprogress';
         $course->price = 0;
         $course->sale_price = 0;
         $course->save();
 
-        return redirect('/instructor/mycourses')->with('success', 'You succesfully created a new Course!');
+        return redirect('/instructor/edit/' . $course->id)->with('success', 'You succesfully created a new Course!');
     }
 
     /**
