@@ -23,6 +23,7 @@
             </div>
             <br><br>
         @endforeach
+        {{ $courses->links() }}
     @else
         <p>You dont have any courses yet</p>
     @endif

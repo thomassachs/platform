@@ -89,7 +89,21 @@ class CoursesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // validate the input of the instructor
+        $this->validate($request, [
+            'title' => ['required', 'unique:courses', 'max:255'],
+            'language' => 'required',
+            'game' => 'required',
+        ]);
+
+        // Create Course
+        $course = Course::find($id);
+        $course->title = $request->input('title');
+        $course->language = $request->input('language');
+        $course->game = $request->input('game');
+        $course->save();
+
+        return redirect('/instructor/edit/' . $course->id)->with('success', 'Course Updated');
     }
 
     /**

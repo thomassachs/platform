@@ -31,7 +31,9 @@ class InstructorController extends Controller
 
     public function myCourses()
     {
-        $courses = Course::where('author_id', Auth::id())->get();
+        $courses = Course::where('author_id', Auth::id())
+                        ->orderBy('updated_at', 'desc')
+                        ->paginate(3);
         return view('instructor.myCourses')->with('courses', $courses);
     }
 
@@ -59,10 +61,8 @@ class InstructorController extends Controller
     public function editCourse($id)
     {
         $course = Course::find($id);
-
-        // check if the guy who wants to edit a course is the author of the course
-        if( $course->author_id == Auth::id()){
-            echo "true";
+        // check if the guy who wants to edit a course is the author of the course and check if course exists
+        if( $course != NULL && $course->author_id == Auth::id()){
             return view('instructor.editCourse')->with('course', $course);
         }else{
             // if somebody tries to edit a course he doesnt own he gets redirected to the mycourses page
