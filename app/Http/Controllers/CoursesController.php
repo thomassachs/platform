@@ -47,7 +47,7 @@ class CoursesController extends Controller
         $course = new Course;
         $course->title = $request->input('title');
         $course->description = '';
-        $course->author_id = Auth::id();
+        $course->user_id = Auth::id();
         $course->language = $request->input('language');
         $course->game = $request->input('game');
         $course->status = 'inprogress';
