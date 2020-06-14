@@ -4,7 +4,7 @@
 
 @include('instructor.sidebar')
 
-<div class="col-md-10">
+<div class="col-md-8">
 
     {{-- this is for the alerts when somebody passes the form incorrectly --}}
     @include('inc.messages')
@@ -52,7 +52,16 @@
 
 
       </div>
-      <div class="tab-pane fade" id="lectures" role="tabpanel" aria-labelledby="lectures-tab">...</div>
+      <div class="tab-pane fade" id="lectures" role="tabpanel" aria-labelledby="lectures-tab">
+
+            here u can add and remove lectures and sections
+            <br><br>
+
+            datenbank für lectures und sections schon erstellt aber noch nicht implementiert
+
+
+
+      </div>
     </div>
 
 

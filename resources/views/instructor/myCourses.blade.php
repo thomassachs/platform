@@ -34,6 +34,9 @@
     @endif
 
 </div>
+<div class="col-md-2">
+
+</div>
     <!-- end row from sidebar -->
     </div>
 
