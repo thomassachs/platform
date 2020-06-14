@@ -114,6 +114,8 @@ class CoursesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $course = Course::find($id);
+        $course->delete();
+        return redirect('/instructor/mycourses/')->with('success', 'Course Removed');
     }
 }
