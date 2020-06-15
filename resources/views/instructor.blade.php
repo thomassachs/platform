@@ -8,4 +8,4 @@
 
 
 
-@endsection('instructorContentcontent')
+@endsection('instructorContent')

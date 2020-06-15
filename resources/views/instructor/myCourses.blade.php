@@ -21,11 +21,34 @@
                     <a href="/instructor/edit/{{ $course->id }}" class="btn btn-primary">Edit</a>
                 </div>
 
-                    {!!Form::open(['action' => ['CoursesController@destroy', $course->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
-                        {{Form::hidden('_method', 'DELETE')}}
-                        {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
-                    {!!Form::close()!!}
-            </div>
+                    {{-- delete modal --}}
+                <div class="card-item">
+
+                    <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#exampleModal">
+                        Delete
+                    </button>
+                </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete {{ $course->title }} ?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No i don't want to delete it</button>
+                            {!!Form::open(['action' => ['CoursesController@destroy', $course->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                                {{Form::hidden('_method', 'DELETE')}}
+                                {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+                            {!!Form::close()!!}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
             <br><br>
         @endforeach
         {{ $courses->links() }}

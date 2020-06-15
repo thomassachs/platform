@@ -27,6 +27,10 @@ class InstructorController extends Controller
 
     public function instructor()
     {
+        $user = Auth::user();
+        $user->instructor = 1;
+        $user->save();
+
         return view('instructor');
     }
 
