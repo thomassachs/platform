@@ -54,28 +54,17 @@ class InstructorController extends Controller
 
     public function createCourse()
     {
-        return view('instructor.createCourse');
-    }
+        //check if instructor already has 5 courses with status "inprogress"
+        $user = Auth::user();
+        $coursesInProgress = count($user->courses->where('status', '=', 'inprogress'));
 
-    public function storeCourse(Request $request)
-    {
-        $this->validate($request, [
-            'title' => 'required',
-            'description' => 'required',
-        ]);
-
-        // Create Course
-        $course = new Course;
-        $course->title = $request->input('title');
-        $course->description = $request->input('description');
-        $course->save();
-
-        return redirect('/instructor/mycourses')->with('success', 'You succesfully created a new Course!');
+        return view('instructor.createCourse')->with('coursesInProgress', $coursesInProgress);
     }
 
     public function editCourse($id)
     {
         $course = Course::find($id);
+
         // check if the guy who wants to edit a course is the author of the course and check if course exists
         if( $course != NULL && $course->user_id == Auth::id()){
             return view('instructor.editCourse')->with('course', $course);
