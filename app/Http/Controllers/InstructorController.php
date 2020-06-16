@@ -16,7 +16,9 @@ class InstructorController extends Controller
      */
     public function __construct()
     {
+        // check if user is logged in and an instructor
         $this->middleware(['auth','verified']);
+        $this->middleware('isInstructor')->except('becomeInstructor');
     }
 
     /**
@@ -25,12 +27,17 @@ class InstructorController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function instructor()
+    public function becomeInstructor()
     {
         $user = Auth::user();
         $user->instructor = 1;
         $user->save();
 
+        return redirect('/instructor');
+    }
+
+    public function instructor()
+    {
         return view('instructor');
     }
 

@@ -28,6 +28,8 @@ Route::get('/account', 'HomeController@index')->name('account');
 
 Route::get('/instructor', 'InstructorController@instructor');
 
+Route::get('/becomeinstructor', 'InstructorController@becomeInstructor');
+
 Route::get('/instructor/mycourses', 'InstructorController@myCourses');
 
 Route::get('/instructor/createcourse', 'InstructorController@createCourse');

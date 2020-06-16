@@ -46,7 +46,7 @@
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Nah i just missclicked</button>
-                                    <a href="{{ url('/instructor') }}">
+                                    <a href="{{ url('/becomeinstructor') }}">
                                         <button type="button" class="btn btn-primary">Yes man!</button>
                                     </a>
 
@@ -54,6 +54,7 @@
                                 </div>
                               </div>
                             </div>
+                            {{-- modal end --}}
                         @elseif(Auth::user()->instructor == 1)
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/instructor') }}">Instructor</a>
