@@ -12,22 +12,22 @@
     {{-- looking if user has created any courses --}}
     @if(count($courses) > 0)
         @foreach ($courses as $course)
-            <div class="card">
-                <h3>{{ $course->title }}</h3>
-                <p><b>status of the course: {{ $course->status }}</b></p>
-                <small>Last updated at {{ $course->updated_at }}</small>
-                <br>
-                <div class="card-item">
-                    <a href="/instructor/edit/{{ $course->id }}" class="btn btn-primary">Edit</a>
-                </div>
+            <div class="pt-3">
+                <div class="card pb-1">
+                    <h3>{{ $course->title }}</h3>
+                    <p><b>status of the course: {{ $course->status }}</b></p>
+                    <small>Last updated at {{ $course->updated_at }}</small>
+                    <br>
+                    <div class="card-item">
+                        <a href="/instructor/edit/{{ $course->id }}" class="btn btn-primary float-left">Edit</a>
 
-                    {{-- delete modal --}}
-                <div class="card-item">
 
-                    <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#exampleModal">
-                        Delete
-                    </button>
-                </div>
+                        {{-- delete modal --}}
+
+                        <button type="button" class="btn btn-danger float-left" data-toggle="modal" data-target="#exampleModal">
+                            Delete
+                        </button>
+                    </div>
 
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -49,7 +49,9 @@
                         </div>
                       </div>
                     </div>
-            <br><br>
+
+                </div>
+
         @endforeach
         {{ $courses->links() }}
     @else
