@@ -40,4 +40,4 @@ Route::get('/course/{courseName}', 'PagesController@coursePage');
 
 Route::resource('courses', 'CoursesController');
 
-Route::resource('sections', 'SectionsController');
+Route::get('section/{course_id}', 'SectionsController@create')->name('createSection');

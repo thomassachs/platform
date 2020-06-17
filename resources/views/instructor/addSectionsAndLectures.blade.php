@@ -7,15 +7,25 @@
     datenbank für lectures und sections schon erstellt aber noch nicht implementiert
 <br><br>
 </div>
-
         {{-- create a new section --}}
-        {!! Form::open(['action' => ['SectionsController@update', $course->id], 'method' => 'POST']) !!}
+        {!! Form::open(['action' => ['SectionsController@create', $course->id], 'method' => 'GET']) !!}
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Create new Section</span>
           </div>
-
             {{ Form::text('sectionName', '', ['class' => 'form-control', 'placeholder' => 'Section Name']) }}
-            {{ Form::hidden('_method', 'PUT') }}
+            {{-- {{ Form::hidden('_method', 'PUT') }} --}}
             {{ Form::submit('Create Section', ['class' => 'btn btn-primary']) }}
+        </div>
         {!! Form::close() !!}
+
+
+        <br><br><br><br>
+
+        @foreach ($course->sections as $section)
+            <div class="card bg-light mb-3" style="width: 100%;">
+                <div class="card-header">{{ $section->position }}. {{ $section->name }}
+                    <button type="button" class="btn btn-primary float-right" name="button">add lecture</button>
+                </div>
+            </div>
+        @endforeach

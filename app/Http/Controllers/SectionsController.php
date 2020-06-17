@@ -7,7 +7,7 @@ use App\Section;
 
 class SectionsController extends Controller
 {
-    public function update(Request $request, $id)
+    public function create(Request $request, $id)
     {
         // validate the input of the instructor
         $this->validate($request, [
