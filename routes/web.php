@@ -39,3 +39,5 @@ Route::get('/instructor/edit/{id}', 'InstructorController@editCourse');
 Route::get('/course/{courseName}', 'PagesController@coursePage');
 
 Route::resource('courses', 'CoursesController');
+
+Route::resource('sections', 'SectionsController');
