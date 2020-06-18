@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Course;
+use App\Section;
 use Illuminate\Support\Facades\Auth;
 
 class CoursesController extends Controller
@@ -54,6 +55,14 @@ class CoursesController extends Controller
         $course->price = 0;
         $course->sale_price = 0;
         $course->save();
+
+        // create the first and undeletable section "introduction" for the course
+        $section = new Section;
+        $section->name = "Introduction";
+        $section->course_id = $course->id;
+        $section->position = 1;
+        $section->save();
+
 
         return redirect('/instructor/edit/' . $course->id)->with('success', 'You succesfully created a new Course!');
     }

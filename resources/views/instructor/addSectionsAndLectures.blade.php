@@ -22,10 +22,18 @@
 
         <br><br><br><br>
 
+        {{-- echo sections and lectures --}}
         @foreach ($course->sections as $section)
             <div class="card bg-light mb-3" style="width: 100%;">
                 <div class="card-header">{{ $section->position }}. {{ $section->name }}
                     <button type="button" class="btn btn-primary float-right" name="button">add lecture</button>
                 </div>
+
+                <div class="card-body">
+                    @foreach ($section->lectures as $lecture)
+                        {{ $lecture->name }}<hr>
+                    @endforeach
+                </div>
+
             </div>
         @endforeach

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Section;
+use App\Course;
 
 class SectionsController extends Controller
 {
@@ -17,7 +18,10 @@ class SectionsController extends Controller
         // Create Section
         $section = new Section;
         $section->name = $request->input('sectionName');
-        $section->position = 1;
+
+        // find sections of the course and give the newly created section the position
+        $course = Course::find($id);
+        $section->position = 1 + count($course->sections);
         $section->course_id = $id;
 
         $section->save();
