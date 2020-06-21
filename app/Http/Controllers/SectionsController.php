@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Section;
+use App\Lecture;
 use App\Course;
 
 class SectionsController extends Controller
@@ -41,5 +42,30 @@ class SectionsController extends Controller
         $section->save();
 
         return redirect('/instructor/edit/' . $courseId);
+    }
+
+    public function destroy($id)
+    {
+        $section = Section::find($id);
+        // delete all lectures of the section
+        foreach ($section->lectures as $lecture) {
+            $lecture->delete();
+        }
+
+
+        $course = Course::find($section->course_id);
+
+        // set sections with higher position one poisition down
+        foreach ($course->sections as $otherSection) {
+            if($otherSection->position > $section->position){
+                $otherSection->position = $otherSection->position -1;
+                $otherSection->save();
+            }
+        }
+
+
+        $section->delete();
+
+        return redirect('/instructor/edit/' . $section->course_id)->with('success', 'Section Removed');
     }
 }

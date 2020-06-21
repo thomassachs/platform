@@ -1,4 +1,4 @@
-<!-- Modal rename section-->
+<!-- Modal add lecture-->
 <div class="modal fade" id="addLectureModal{{ $section->id }}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="addLectureModal" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">

@@ -44,4 +44,6 @@ Route::get('section/{course_id}', 'SectionsController@create')->name('createSect
 
 Route::get('section/{section_id}/{course_id}', 'SectionsController@rename')->name('renameSection');
 
+Route::get('sectionDestroy/{section_id}', 'SectionsController@destroy')->name('destroySection');
+
 Route::get('lecture/{section_id}/{course_id}', 'LecturesController@store')->name('storeLecture');

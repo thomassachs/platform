@@ -28,8 +28,11 @@
                 <div class="card-header">{{ $section->position }}. {{ $section->name }}
                     <button type="button" class="btn btn-primary float-right" name="button" data-toggle="modal" data-target="#addLectureModal{{ $section->id }}">add lecture</button>
                     <button type="button" class="btn btn-secondary float-right mr-3" name="button" data-toggle="modal" data-target="#renameSectionModal{{ $section->id }}">rename section</button>
+                    <button type="button" class="btn btn-danger float-right mr-3" name="button" data-toggle="modal" data-target="#deleteSectionModal{{ $section->id }}">delete section</button>
                 </div>
 
+                {{-- modal for delete section --}}
+                @include('instructor.modals.deleteSectionModal')
                 {{-- modal for rename section --}}
                 @include('instructor.modals.renameSectionModal')
                 {{-- modal for addLecture --}}
