@@ -53,6 +53,7 @@
                 </div>
 
         @endforeach
+        {{-- pagination --}}
         {{ $courses->links() }}
     @else
         <p>You dont have any courses yet</p>
@@ -62,6 +63,7 @@
 <div class="col-md-2">
 
 </div>
+
     <!-- end row from sidebar -->
     </div>
 

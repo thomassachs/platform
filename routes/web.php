@@ -41,3 +41,5 @@ Route::get('/course/{courseName}', 'PagesController@coursePage');
 Route::resource('courses', 'CoursesController');
 
 Route::get('section/{course_id}', 'SectionsController@create')->name('createSection');
+
+Route::get('section/{section_id}/{course_id}', 'SectionsController@rename')->name('renameSection');

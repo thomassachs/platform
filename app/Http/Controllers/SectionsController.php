@@ -28,4 +28,18 @@ class SectionsController extends Controller
 
         return redirect('/instructor/edit/' . $id);
     }
+
+    public function rename(Request $request, $sectionId, $courseId)
+    {
+        // validate the input of the instructor
+        $this->validate($request, [
+            'sectionName' => ['required', 'max:255'],
+        ]);
+
+        $section = Section::find($sectionId);
+        $section->name = $request->input('sectionName');
+        $section->save();
+
+        return redirect('/instructor/edit/' . $courseId);
+    }
 }

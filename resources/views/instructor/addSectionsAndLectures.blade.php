@@ -24,16 +24,24 @@
 
         {{-- echo sections and lectures --}}
         @foreach ($course->sections as $section)
-            <div class="card bg-light mb-3" style="width: 100%;">
+            <div class="card bg-seco mb-3" style="width: 100%;">
                 <div class="card-header">{{ $section->position }}. {{ $section->name }}
                     <button type="button" class="btn btn-primary float-right" name="button">add lecture</button>
+                    <button type="button" class="btn btn-secondary float-right mr-3" name="button" data-toggle="modal" data-target="#renameSectionModal">rename section</button>
                 </div>
 
-                <div class="card-body">
-                    @foreach ($section->lectures as $lecture)
-                        {{ $lecture->name }}<hr>
-                    @endforeach
-                </div>
+                {{-- modal for rename section --}}
+                @include('instructor.modals.renameSectionModal')
+
+
+                {{-- check if lectures for this section exists --}}
+                @if (count($section->lectures) > 0)
+                    <div class="card-body">
+                        @foreach ($section->lectures as $lecture)
+                            {{ $lecture->name }}<hr>
+                        @endforeach
+                    </div>
+                @endif
 
             </div>
         @endforeach
