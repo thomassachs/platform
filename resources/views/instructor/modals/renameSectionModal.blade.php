@@ -1,5 +1,5 @@
 <!-- Modal rename section-->
-<div class="modal fade" id="renameSectionModal" tabindex="-1" role="dialog" aria-labelledby="renameSectionModal" aria-hidden="true">
+<div class="modal fade" id="renameSectionModal{{ $section->id }}" tabindex="-1" role="dialog" aria-labelledby="renameSectionModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
