@@ -26,6 +26,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('/account', 'HomeController@index')->name('account');
 
+
+// instructor routes
 Route::get('/instructor', 'InstructorController@instructor');
 
 Route::get('/becomeinstructor', 'InstructorController@becomeInstructor');
@@ -36,10 +38,14 @@ Route::get('/instructor/createcourse', 'InstructorController@createCourse');
 
 Route::get('/instructor/edit/{id}', 'InstructorController@editCourse');
 
+
+// courses routes
 Route::get('/course/{courseName}', 'PagesController@coursePage');
 
 Route::resource('courses', 'CoursesController');
 
+
+// section routes
 Route::get('section/{course_id}', 'SectionsController@create')->name('createSection');
 
 Route::get('section/{section_id}/{course_id}', 'SectionsController@rename')->name('renameSection');
