@@ -68,4 +68,31 @@ class SectionsController extends Controller
 
         return redirect('/instructor/edit/' . $section->course_id)->with('success', 'Section Removed');
     }
+
+    public function moveUp($sectionId)
+    {
+
+        // die kacke funktioniert noch nicht
+        $section = Section::find($sectionId);
+        $course = Course::find($section->course_id);
+
+        foreach ($course->sections as $csection) {
+            if ($csection->position == $section->position -1) {
+                $id = $csection->id;
+            }
+        }
+
+        $upperSection = Section::find($id);
+
+        $upperSection->position = $upperSection->position + 1;
+        $section->position = $section->position - 1;
+        $upperSection->save();
+        $section->save();
+
+
+        return redirect('/instructor/edit/' . $section->course_id)->with('success', 'Section moved Upwards');
+    }
+
+
+
 }

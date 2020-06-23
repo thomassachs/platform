@@ -50,6 +50,10 @@ Route::get('section/{course_id}', 'SectionsController@create')->name('createSect
 
 Route::get('section/{section_id}/{course_id}', 'SectionsController@rename')->name('renameSection');
 
+Route::get('moveSectionUp/{section_id}', 'SectionsController@moveUp')->name('moveUpSection');
+
 Route::get('sectionDestroy/{section_id}', 'SectionsController@destroy')->name('destroySection');
 
+
+// lecture routes
 Route::get('lecture/{section_id}/{course_id}', 'LecturesController@store')->name('storeLecture');
