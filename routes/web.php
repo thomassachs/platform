@@ -52,6 +52,8 @@ Route::get('section/{section_id}/{course_id}', 'SectionsController@rename')->nam
 
 Route::get('moveSectionUp/{section_id}', 'SectionsController@moveUp')->name('moveUpSection');
 
+Route::get('moveSectionDown/{section_id}', 'SectionsController@moveDown')->name('moveDownSection');
+
 Route::get('sectionDestroy/{section_id}', 'SectionsController@destroy')->name('destroySection');
 
 

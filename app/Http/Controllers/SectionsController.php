@@ -55,7 +55,7 @@ class SectionsController extends Controller
 
         $course = Course::find($section->course_id);
 
-        // set sections with higher position one poisition down
+        // set sections with higher position one position down
         foreach ($course->sections as $otherSection) {
             if($otherSection->position > $section->position){
                 $otherSection->position = $otherSection->position -1;
@@ -72,25 +72,47 @@ class SectionsController extends Controller
     public function moveUp($sectionId)
     {
 
-        // die kacke funktioniert noch nicht
-        $section = Section::find($sectionId);
-        $course = Course::find($section->course_id);
+        $currentSection = Section::find($sectionId);
 
-        foreach ($course->sections as $csection) {
-            if ($csection->position == $section->position -1) {
-                $id = $csection->id;
+        $course = Course::find($currentSection->course_id);
+
+        // set the section with higher position one position down
+        foreach ($course->sections as $otherSection) {
+            if($otherSection->position == $currentSection->position -1){
+                $otherSection->position = $otherSection->position + 1;
+                $otherSection->save();
             }
         }
 
-        $upperSection = Section::find($id);
 
-        $upperSection->position = $upperSection->position + 1;
-        $section->position = $section->position - 1;
-        $upperSection->save();
-        $section->save();
+        $currentSection->position = $currentSection->position - 1;
+
+        $currentSection->save();
+
+        return redirect('/instructor/edit/' . $currentSection->course_id)->with('success', 'Section moved upwards' );
+    }
+
+    public function moveDown($sectionId)
+    {
+
+        $currentSection = Section::find($sectionId);
+
+        $course = Course::find($currentSection->course_id);
+
+        // set the section with higher position one position down
+        foreach ($course->sections as $otherSection) {
+            if($otherSection->position == $currentSection->position +1){
+                $otherSection->position = $otherSection->position - 1;
+                $otherSection->save();
+            }
+        }
 
 
-        return redirect('/instructor/edit/' . $section->course_id)->with('success', 'Section moved Upwards');
+        $currentSection->position = $currentSection->position + 1;
+
+        $currentSection->save();
+
+        return redirect('/instructor/edit/' . $currentSection->course_id)->with('success', 'Section moved upwards' );
     }
 
 
