@@ -31,4 +31,71 @@ class LecturesController extends Controller
         return redirect('/instructor/edit/' . $courseId)->with('success', 'lecture created succesfully');
     }
 
+    public function moveUp($lectureId)
+    {
+
+        $currentLecture = Lecture::find($lectureId);
+
+        $section = Section::find($currentLecture->section_id);
+
+        // set the section with higher position one position down
+        foreach ($section->lectures as $otherLecture) {
+            if($otherLecture->position == $currentLecture->position -1){
+                $otherLecture->position = $otherLecture->position + 1;
+                $otherLecture->save();
+            }
+        }
+
+
+        $currentLecture->position = $currentLecture->position - 1;
+
+        $currentLecture->save();
+
+        return redirect('/instructor/edit/' . $section->course_id)->with('success', 'Lecture moved upwards' );
+    }
+
+    public function moveDown($lectureId)
+    {
+
+        $currentLecture = Lecture::find($lectureId);
+
+        $section = Section::find($currentLecture->section_id);
+
+        // set the section with higher position one position down
+        foreach ($section->lectures as $otherLecture) {
+            if($otherLecture->position == $currentLecture->position + 1){
+                $otherLecture->position = $otherLecture->position - 1;
+                $otherLecture->save();
+            }
+        }
+
+
+        $currentLecture->position = $currentLecture->position + 1;
+
+        $currentLecture->save();
+
+        return redirect('/instructor/edit/' . $section->course_id)->with('success', 'Lecture moved downwards' );
+    }
+
+    public function destroy($id)
+    {
+        $lecture = Lecture::find($id);
+
+
+        $section = Section::find($lecture->section_id);
+
+        // set sections with higher position one position down
+        foreach ($section->lectures as $otherLecture) {
+            if($otherLecture->position > $lecture->position){
+                $otherLecture->position = $otherLecture->position -1;
+                $otherLecture->save();
+            }
+        }
+
+
+        $lecture->delete();
+
+        return redirect('/instructor/edit/' . $section->course_id)->with('success', 'Lecture Removed');
+    }
+
 }

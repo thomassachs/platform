@@ -33,7 +33,6 @@
                         <a href="{{ action('SectionsController@moveDown', $section->id) }}" class="btn btn-primary float-right mr-3">
                             <i class="fas fa-arrow-down"></i>
                         </a>
-                    
                     @endif
                     @if ($section->position != 1)
                         <a href="{{ action('SectionsController@moveUp', $section->id) }}" class="btn btn-primary float-right mr-3">
@@ -52,13 +51,31 @@
                 {{-- check if lectures for this section exists --}}
                 @if (count($section->lectures) > 0)
                     <div class="card-body">
-                        @foreach ($section->lectures as $lecture)
+                        @foreach ($section->lectures->sortBy('position') as $lecture)
                             <div class="card-item">
-                                @if ($lecture->position != 1)
-                                    <hr>
-                                @endif
                                 <div class="ml-5">
+                                    @if ($lecture->position != 1)
+                                        <hr >
+                                    @endif
+
                                     {{ $section->position }}.{{ $lecture->position }} <span class="ml-4">{{ $lecture->name }}</span>
+
+                                    <button type="button" class="btn btn-danger float-right mr-3" name="button" data-toggle="modal" data-target="#deleteLectureModal{{ $lecture->id }}"><i class="fas fa-trash-alt"></i></button>
+
+                                    {{-- modal for delete lecture --}}
+                                    @include('instructor.modals.deleteLectureModal')
+
+                                    @if ($section->lectures->max('position') != $lecture->position)
+                                        <a href="{{ action('LecturesController@moveDown', $lecture->id) }}" class="btn btn-primary float-right mr-3 ">
+                                            <i class="fas fa-arrow-down"></i>
+                                        </a>
+
+                                    @endif
+                                    @if ($lecture->position != 1)
+                                        <a href="{{ action('LecturesController@moveUp', $lecture->id) }}" class="btn btn-primary float-right mr-3">
+                                            <i class="fas fa-arrow-up"></i>
+                                        </a>
+                                    @endif
                                 </div>
 
                             </div>
