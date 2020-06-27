@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use App\Lecture;
 use App\Section;
+use App\Course;
 
 class LecturesController extends Controller
 {
@@ -14,16 +17,38 @@ class LecturesController extends Controller
 
         $this->validate($request, [
             'lectureName' => ['required', 'max:255'],
+            'lectureVideo' => 'nullable|mimes:mp4|max:19999',
         ]);
 
+        // create Lecture
         $section = Section::find($sectionId);
+
+        // handle videoupload
+        if($request->hasFile('lectureVideo')){
+            // get the coursename
+            $course = Course::find($section->course_id);
+
+            // Get filename with the extension
+            $filenameWithExt = $request->file('lectureVideo')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('lectureVideo')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+
+            // store the file in the course folder
+            $destinationPath = 'public/courses/' . $course->status . '/' . $course->title ;
+
+            $path = $request->file('lectureVideo')->storeAs($destinationPath, $fileNameToStore);
+        }
 
         $lecture = new Lecture;
         $lecture->name = $request->input('lectureName');
         $lecture->section_id = $sectionId;
         $lecture->position = 1 + count($section->lectures);
         $lecture->type = 'video';
-        $lecture->videopath = 0;
+        $lecture->videopath = $destinationPath . "/" . $fileNameToStore;
 
 
         $lecture->save();

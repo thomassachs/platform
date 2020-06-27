@@ -12,7 +12,7 @@
     <h1>Create a new Course</h1>
 
     @if ($coursesInProgress < 5)
-        {!! Form::open(['action' => 'CoursesController@store', 'method' => 'POST']) !!}
+        {!! Form::open(['action' => 'CoursesController@store', 'method' => 'POST', 'enctype' => 'multipart&data']) !!}
             <div class="form-group">
                 {{ Form::label('title', 'Title*') }}
                 {{ Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title']) }}

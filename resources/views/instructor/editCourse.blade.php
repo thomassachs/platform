@@ -51,7 +51,13 @@
 
 
           description
-
+          <div class="">
+            <video width="320" height="240" controls>
+                <source src="../storage/app/public/courses/inprogress/besserwerdeninlol/5aa3fa34cee2fdogs_1593264004.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+            </video>
+            <img style="width:100%" src="storage\app\public\courses\inprogress\besserwerdeninlol\thumb-1920-673431_1593263850.jpg" alt="">
+          </div>
 
       </div>
 

@@ -12,12 +12,15 @@
       <br>
 
       {{-- add lecture form --}}
-      {!! Form::open(['action' => ['LecturesController@store', $section->id, $course->id], 'method' => 'GET']) !!}
+      {!! Form::open(['action' => ['LecturesController@store', $section->id, $course->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
       <div class="modal-body">
 
           <div class="form-group mb-3">
               {{ Form::label('lectureName', 'Name of your new lecture') }}
               {{ Form::text('lectureName', '', ['class' => 'form-control', 'placeholder' => 'new name']) }}
+          </div>
+          <div class="form-group mb-3 text-center">
+              {{ Form::file('lectureVideo') }}
           </div>
       </div>
 

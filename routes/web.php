@@ -58,7 +58,7 @@ Route::get('sectionDestroy/{section_id}', 'SectionsController@destroy')->name('d
 
 
 // lecture routes
-Route::get('lecture/{section_id}/{course_id}', 'LecturesController@store')->name('storeLecture');
+Route::post('lecture/{section_id}/{course_id}', 'LecturesController@store')->name('storeLecture');
 
 Route::get('moveLectureUp/{lecture_id}', 'LecturesController@moveUp')->name('moveUpLecture');
 
