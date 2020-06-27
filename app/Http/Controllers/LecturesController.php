@@ -20,7 +20,7 @@ class LecturesController extends Controller
             'lectureVideo' => 'nullable|mimes:mp4|max:19999',
         ]);
 
-        // create Lecture
+
         $section = Section::find($sectionId);
 
         // handle videoupload
@@ -38,17 +38,24 @@ class LecturesController extends Controller
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
 
             // store the file in the course folder
-            $destinationPath = 'public/courses/' . $course->status . '/' . $course->title ;
+            $destinationPath = 'courses/' . $course->status . '/' . $course->title ;
 
             $path = $request->file('lectureVideo')->storeAs($destinationPath, $fileNameToStore);
         }
 
+        // create Lecture
         $lecture = new Lecture;
         $lecture->name = $request->input('lectureName');
         $lecture->section_id = $sectionId;
         $lecture->position = 1 + count($section->lectures);
         $lecture->type = 'video';
-        $lecture->videopath = $destinationPath . "/" . $fileNameToStore;
+
+        if(isset($destinationPath) && isset($fileNameToStore)){
+            $lecture->videopath = $destinationPath . "/" . $fileNameToStore;
+        }else{
+            $lecture->videopath = "";
+        }
+
 
 
         $lecture->save();

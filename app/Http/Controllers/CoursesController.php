@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Course;
 use App\Section;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 class CoursesController extends Controller
 {
@@ -124,6 +126,13 @@ class CoursesController extends Controller
     public function destroy($id)
     {
         $course = Course::find($id);
+        Storage::deleteDirectory('courses/' . $course->status . '/' . $course->title);
+        foreach ($course->sections as $section) {
+            foreach ($section->lectures as $lecture) {
+                $lecture->delete();
+            }
+            $section->delete();
+        }
         $course->delete();
         return redirect('/instructor/mycourses/')->with('success', 'Course Removed');
     }
