@@ -51,7 +51,7 @@ class LecturesController extends Controller
         $lecture->type = 'video';
 
         if(isset($destinationPath) && isset($fileNameToStore)){
-            $lecture->videopath = $destinationPath . "/" . $fileNameToStore;
+            $lecture->videopath = $fileNameToStore;
         }else{
             $lecture->videopath = "";
         }
@@ -113,8 +113,9 @@ class LecturesController extends Controller
     {
         $lecture = Lecture::find($id);
 
-
         $section = Section::find($lecture->section_id);
+
+        $course = Course::find($section->course_id);
 
         // set sections with higher position one position down
         foreach ($section->lectures as $otherLecture) {
@@ -124,6 +125,10 @@ class LecturesController extends Controller
             }
         }
 
+        // delete video in storage if exists
+        if(isset($lecture->videopath) && !empty($lecture->videopath)){
+            Storage::delete( 'courses/' . $course->status . '/' . $course->title . '/' . $lecture->videopath);
+        }
 
         $lecture->delete();
 
