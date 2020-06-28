@@ -66,7 +66,7 @@ class CoursesController extends Controller
         $section->save();
 
 
-        return redirect('/instructor/edit/' . $course->id)->with('success', 'You succesfully created a new Course!');
+        return redirect('/instructor/edit/' . $course->id . '/general')->with('success', 'You succesfully created a new Course!');
     }
 
     /**
@@ -114,7 +114,7 @@ class CoursesController extends Controller
         $course->game = $request->input('game');
         $course->save();
 
-        return redirect('/instructor/edit/' . $course->id)->with('success', 'Course Updated');
+        return redirect('/instructor/edit/' . $course->id . '/general')->with('success', 'Course Updated');
     }
 
     /**

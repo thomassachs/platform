@@ -27,7 +27,7 @@ class SectionsController extends Controller
 
         $section->save();
 
-        return redirect('/instructor/edit/' . $id);
+        return redirect('/instructor/edit/' . $id . '/lectures');
     }
 
     public function rename(Request $request, $sectionId, $courseId)
@@ -41,7 +41,7 @@ class SectionsController extends Controller
         $section->name = $request->input('sectionName');
         $section->save();
 
-        return redirect('/instructor/edit/' . $courseId);
+        return redirect('/instructor/edit/' . $courseId . '/lectures');
     }
 
     public function destroy($id)
@@ -66,7 +66,7 @@ class SectionsController extends Controller
 
         $section->delete();
 
-        return redirect('/instructor/edit/' . $section->course_id)->with('success', 'Section Removed');
+        return redirect('/instructor/edit/' . $section->course_id . '/lectures')->with('success', 'Section Removed');
     }
 
     public function moveUp($sectionId)
@@ -89,7 +89,7 @@ class SectionsController extends Controller
 
         $currentSection->save();
 
-        return redirect('/instructor/edit/' . $currentSection->course_id)->with('success', 'Section moved upwards' );
+        return redirect('/instructor/edit/' . $currentSection->course_id . '/lectures')->with('success', 'Section moved upwards' );
     }
 
     public function moveDown($sectionId)
@@ -112,7 +112,7 @@ class SectionsController extends Controller
 
         $currentSection->save();
 
-        return redirect('/instructor/edit/' . $currentSection->course_id)->with('success', 'Section moved upwards' );
+        return redirect('/instructor/edit/' . $currentSection->course_id . '/lectures')->with('success', 'Section moved upwards' );
     }
 
 

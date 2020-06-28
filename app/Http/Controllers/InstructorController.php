@@ -61,13 +61,41 @@ class InstructorController extends Controller
         return view('instructor.createCourse')->with('coursesInProgress', $coursesInProgress);
     }
 
-    public function editCourse($id)
+    public function editGeneral($id)
     {
         $course = Course::find($id);
 
         // check if the guy who wants to edit a course is the author of the course and check if course exists
         if( $course != NULL && $course->user_id == Auth::id()){
-            return view('instructor.editCourse')->with('course', $course);
+            return view('instructor.editGeneral')->with('course', $course);
+        }else{
+            // if somebody tries to edit a course he doesnt own he gets redirected to the mycourses page
+            return redirect('/instructor/mycourses');
+        }
+
+    }
+
+    public function editDescription($id)
+    {
+        $course = Course::find($id);
+
+        // check if the guy who wants to edit a course is the author of the course and check if course exists
+        if( $course != NULL && $course->user_id == Auth::id()){
+            return view('instructor.editDescription')->with('course', $course);
+        }else{
+            // if somebody tries to edit a course he doesnt own he gets redirected to the mycourses page
+            return redirect('/instructor/mycourses');
+        }
+
+    }
+
+    public function editLectures($id)
+    {
+        $course = Course::find($id);
+
+        // check if the guy who wants to edit a course is the author of the course and check if course exists
+        if( $course != NULL && $course->user_id == Auth::id()){
+            return view('instructor.editLectures')->with('course', $course);
         }else{
             // if somebody tries to edit a course he doesnt own he gets redirected to the mycourses page
             return redirect('/instructor/mycourses');

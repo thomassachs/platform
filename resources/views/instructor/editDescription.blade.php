@@ -13,13 +13,13 @@
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link " id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="false">General</a>
+        <a class="nav-link " href="/instructor/edit/{{ $course->id }}/general">General</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="false">Description</a>
+        <a class="nav-link active" href="">Description</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" id="lectures-tab" data-toggle="tab" href="#lectures" role="tab" aria-controls="lectures" aria-selected="true">Lectures</a>
+        <a class="nav-link" href="/instructor/edit/{{ $course->id }}/lectures">Lectures</a>
       </li>
     </ul>
 
@@ -47,7 +47,7 @@
 
 
       {{-- description tab --}}
-      <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab">
+      <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
 
 
           description
@@ -61,13 +61,6 @@
 
       </div>
 
-
-      {{-- lectures tab --}}
-      <div class="tab-pane fade show active" id="lectures" role="tabpanel" aria-labelledby="lectures-tab">
-
-            @include('instructor.addSectionsAndLectures')
-
-      </div>
     </div>
 
 

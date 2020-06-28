@@ -36,7 +36,11 @@ Route::get('/instructor/mycourses', 'InstructorController@myCourses');
 
 Route::get('/instructor/createcourse', 'InstructorController@createCourse');
 
-Route::get('/instructor/edit/{id}', 'InstructorController@editCourse');
+Route::get('/instructor/edit/{id}/general' , 'InstructorController@editGeneral');
+
+Route::get('/instructor/edit/{id}/description' , 'InstructorController@editDescription');
+
+Route::get('/instructor/edit/{id}/lectures', 'InstructorController@editLectures');
 
 
 // courses routes

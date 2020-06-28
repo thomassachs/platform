@@ -60,7 +60,7 @@ class LecturesController extends Controller
 
         $lecture->save();
 
-        return redirect('/instructor/edit/' . $courseId)->with('success', 'lecture created succesfully');
+        return redirect('/instructor/edit/' . $courseId . '/lectures')->with('success', 'lecture created succesfully');
     }
 
     public function moveUp($lectureId)
@@ -83,7 +83,7 @@ class LecturesController extends Controller
 
         $currentLecture->save();
 
-        return redirect('/instructor/edit/' . $section->course_id)->with('success', 'Lecture moved upwards' );
+        return redirect('/instructor/edit/' . $section->course_id . '/lectures')->with('success', 'Lecture moved upwards' );
     }
 
     public function moveDown($lectureId)
@@ -106,7 +106,7 @@ class LecturesController extends Controller
 
         $currentLecture->save();
 
-        return redirect('/instructor/edit/' . $section->course_id)->with('success', 'Lecture moved downwards' );
+        return redirect('/instructor/edit/' . $section->course_id . '/lectures')->with('success', 'Lecture moved downwards' );
     }
 
     public function destroy($id)
@@ -132,7 +132,7 @@ class LecturesController extends Controller
 
         $lecture->delete();
 
-        return redirect('/instructor/edit/' . $section->course_id)->with('success', 'Lecture Removed');
+        return redirect('/instructor/edit/' . $section->course_id . '/lectures')->with('success', 'Lecture Removed');
     }
 
 }
