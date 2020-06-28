@@ -19,7 +19,7 @@
                     <small>Last updated at {{ $course->updated_at }}</small>
                     <br>
                     <div class="card-item">
-                        <a href="/instructor/edit/{{ $course->id }}" class="btn btn-primary float-left">Edit</a>
+                        <a href="/instructor/edit/{{ $course->id }}/general" class="btn btn-primary float-left">Edit</a>
 
 
                         {{-- delete modal --}}
