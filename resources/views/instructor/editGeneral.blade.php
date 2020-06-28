@@ -52,7 +52,7 @@
         <div class="col-md-4">
             <br>
             <p>Your current Course Thumbnail:</p>
-            <img src="/storage/inc/demo-1.jpg" alt="">
+            <img src="/storage/inc/demo-1.jpg" width="300" height="200" alt="">
         </div>
     </div>
 </div>

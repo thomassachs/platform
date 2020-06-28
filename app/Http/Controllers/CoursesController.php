@@ -107,7 +107,7 @@ class CoursesController extends Controller
             'game' => 'required',
         ]);
 
-        // Create Course
+        // Update Course
         $course = Course::find($id);
         $course->title = $request->input('title');
         $course->language = $request->input('language');
