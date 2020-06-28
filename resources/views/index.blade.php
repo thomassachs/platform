@@ -2,7 +2,7 @@
 
 @section('content')
 
-this is the front pagee
+this is the front pageee
 <i class="fas fa-star"></i>
 
 @endsection('content')
