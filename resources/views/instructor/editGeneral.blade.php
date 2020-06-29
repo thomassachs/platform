@@ -49,10 +49,26 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <br>
             <p>Your current Course Thumbnail:</p>
-            <img src="/storage/inc/demo-1.jpg" width="300" height="200" alt="">
+            @if (!empty($course->imagePath))
+                <img src="/storage/courses/{{ $course->status }}/{{ $course->title }}/{{ $course->imagePath }}" width="300" height="200" alt="">
+            @else
+                <img src="/storage/inc/demo-1.jpg" width="300" height="200" alt="">
+            @endif
+
+        </div>
+        <div class="col-md-3">
+            <br><br><br>
+            {!! Form::open(['action' => ['CoursesController@changeImage', $course->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+
+
+            {{ Form::submit('Change Image', ['class' => 'btn btn-primary']) }}
+
+            {{ Form::file('image') }}
+
+            {!! Form::close() !!}
         </div>
     </div>
 </div>

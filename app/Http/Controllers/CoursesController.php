@@ -136,4 +136,41 @@ class CoursesController extends Controller
         $course->delete();
         return redirect('/instructor/mycourses/')->with('success', 'Course Removed');
     }
+
+    public function changeImage(Request $request, $id)
+    {
+        $this->validate($request, [
+            'image' => 'image|max:1999|required',
+        ]);
+
+        if($request->hasFile('image')){
+            // get the coursename
+            $course = Course::find($id);
+
+            // delete old image if exists
+            if(!empty($course->imagePath)){
+                Storage::delete('/public/courses/' . $course->status . '/' . $course->title . '/' . $course->imagePath);
+            }
+
+            // Get filename with the extension
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('image')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+
+            // store the file in the course folder
+            $destinationPath = 'public/courses/' . $course->status . '/' . $course->title ;
+
+            $path = $request->file('image')->storeAs($destinationPath, $fileNameToStore);
+
+            $course->imagePath = $fileNameToStore;
+
+            $course->save();
+        }
+
+        return redirect('/instructor/edit/' . $course->id . '/general')->with('success', 'Course Image Changed');
+    }
 }

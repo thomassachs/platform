@@ -38,7 +38,7 @@ class LecturesController extends Controller
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
 
             // store the file in the course folder
-            $destinationPath = 'courses/' . $course->status . '/' . $course->title ;
+            $destinationPath = 'public/courses/' . $course->status . '/' . $course->title ;
 
             $path = $request->file('lectureVideo')->storeAs($destinationPath, $fileNameToStore);
         }

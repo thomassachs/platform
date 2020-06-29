@@ -46,8 +46,11 @@ Route::get('/instructor/edit/{id}/lectures', 'InstructorController@editLectures'
 // courses routes
 Route::get('/course/{courseName}', 'PagesController@coursePage');
 
+Route::get('/course/{courseName}', 'PagesController@coursePage');
+
 Route::resource('courses', 'CoursesController');
 
+Route::post('/course/{id}/changeimage', 'CoursesController@changeImage');
 
 // section routes
 Route::get('section/{course_id}', 'SectionsController@create')->name('createSection');
