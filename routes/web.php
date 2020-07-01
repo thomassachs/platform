@@ -42,6 +42,10 @@ Route::get('/instructor/edit/{id}/description' , 'InstructorController@editDescr
 
 Route::get('/instructor/edit/{id}/lectures', 'InstructorController@editLectures');
 
+Route::get('/instructor/edit/{id}/pricing', 'InstructorController@editPrice');
+
+Route::get('/instructor/edit/{id}/submit', 'InstructorController@submitCourse');
+
 
 // courses routes
 Route::get('/course/{courseName}', 'PagesController@coursePage');

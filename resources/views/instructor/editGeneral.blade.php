@@ -9,7 +9,7 @@
     {{-- this is for the alerts when somebody passes the form incorrectly --}}
     @include('inc.messages')
 
-    <h1>Edit {{ $course->title }}</h1>
+    @include('instructor.inc.editCourseHead')
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
@@ -20,6 +20,12 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/instructor/edit/{{ $course->id }}/lectures">Lectures</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/instructor/edit/{{ $course->id }}/pricing">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/instructor/edit/{{ $course->id }}/submit">Submit</a>
       </li>
     </ul>
 
@@ -53,7 +59,7 @@
             <br>
             <p>Your current Course Thumbnail:</p>
             @if (!empty($course->imagePath))
-                <img src="/storage/courses/{{ $course->status }}/{{ $course->title }}/{{ $course->imagePath }}" width="300" height="200" alt="">
+                <img src="/storage/courses/{{ $course->status }}/{{ $course->storageName }}/{{ $course->imagePath }}" width="300" height="200" alt="">
             @else
                 <img src="/storage/inc/demo-1.jpg" width="300" height="200" alt="">
             @endif

@@ -49,6 +49,7 @@ class CoursesController extends Controller
         // Create Course
         $course = new Course;
         $course->title = $request->input('title');
+        $course->storageName = $request->input('title');
         $course->description = '';
         $course->user_id = Auth::id();
         $course->language = $request->input('language');
@@ -126,7 +127,7 @@ class CoursesController extends Controller
     public function destroy($id)
     {
         $course = Course::find($id);
-        Storage::deleteDirectory('courses/' . $course->status . '/' . $course->title);
+        Storage::deleteDirectory('courses/' . $course->status . '/' . $course->storageName);
         foreach ($course->sections as $section) {
             foreach ($section->lectures as $lecture) {
                 $lecture->delete();
@@ -149,7 +150,7 @@ class CoursesController extends Controller
 
             // delete old image if exists
             if(!empty($course->imagePath)){
-                Storage::delete('/public/courses/' . $course->status . '/' . $course->title . '/' . $course->imagePath);
+                Storage::delete('/public/courses/' . $course->status . '/' . $course->storageName . '/' . $course->imagePath);
             }
 
             // Get filename with the extension

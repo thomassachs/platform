@@ -102,5 +102,31 @@ class InstructorController extends Controller
         }
     }
 
+    public function editPrice($id)
+    {
+        $course = Course::find($id);
+
+        // check if the guy who wants to edit a course is the author of the course and check if course exists
+        if( $course != NULL && $course->user_id == Auth::id()){
+            return view('instructor.editPrice')->with('course', $course);
+        }else{
+            // if somebody tries to edit a course he doesnt own he gets redirected to the mycourses page
+            return redirect('/instructor/mycourses');
+        }
+    }
+
+    public function submitCourse($id)
+    {
+        $course = Course::find($id);
+
+        // check if the guy who wants to edit a course is the author of the course and check if course exists
+        if( $course != NULL && $course->user_id == Auth::id()){
+            return view('instructor.submitCourse')->with('course', $course);
+        }else{
+            // if somebody tries to edit a course he doesnt own he gets redirected to the mycourses page
+            return redirect('/instructor/mycourses');
+        }
+    }
+
 
 }

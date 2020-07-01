@@ -38,7 +38,7 @@ class LecturesController extends Controller
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
 
             // store the file in the course folder
-            $destinationPath = 'public/courses/' . $course->status . '/' . $course->title ;
+            $destinationPath = 'public/courses/' . $course->status . '/' . $course->storageName ;
 
             $path = $request->file('lectureVideo')->storeAs($destinationPath, $fileNameToStore);
         }
@@ -127,7 +127,7 @@ class LecturesController extends Controller
 
         // delete video in storage if exists
         if(isset($lecture->videopath) && !empty($lecture->videopath)){
-            Storage::delete( 'courses/' . $course->status . '/' . $course->title . '/' . $lecture->videopath);
+            Storage::delete( 'courses/' . $course->status . '/' . $course->storageName . '/' . $lecture->videopath);
         }
 
         $lecture->delete();

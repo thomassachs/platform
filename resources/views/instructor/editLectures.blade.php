@@ -9,7 +9,7 @@
     {{-- this is for the alerts when somebody passes the form incorrectly --}}
     @include('inc.messages')
 
-    <h1>Edit {{ $course->title }}</h1>
+    @include('instructor.inc.editCourseHead')
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
@@ -20,6 +20,12 @@
       </li>
       <li class="nav-item">
         <a class="nav-link active" id="lectures-tab" data-toggle="tab" href="#lectures" role="tab" aria-controls="lectures" aria-selected="true">Lectures</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/instructor/edit/{{ $course->id }}/pricing">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/instructor/edit/{{ $course->id }}/submit">Submit</a>
       </li>
     </ul>
 
