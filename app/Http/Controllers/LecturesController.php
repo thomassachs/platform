@@ -8,6 +8,7 @@ use Intervention\Image\Facades\Image;
 use App\Lecture;
 use App\Section;
 use App\Course;
+use Carbon\Carbon;
 
 class LecturesController extends Controller
 {
@@ -52,6 +53,18 @@ class LecturesController extends Controller
 
         if(isset($destinationPath) && isset($fileNameToStore)){
             $lecture->videopath = $fileNameToStore;
+
+            // set video duration
+            $getID3 = new \getID3;
+            $file = $getID3->analyze($request->file('lectureVideo'));
+            $duration = date('H:i:s', $file['playtime_seconds']);
+            $lecture->video_duration = $duration;
+
+            // add video duration to course duration
+            $lduration = Carbon::createFromFormat('H:i:s', $duration);
+            $currentCourseDuration = Carbon::createFromFormat('H:i:s', $course->course_duration);
+            $course->course_duration = $currentCourseDuration->addSeconds($lduration->secondsSinceMidnight());
+            $course->save();
         }else{
             $lecture->videopath = "";
         }
@@ -125,9 +138,14 @@ class LecturesController extends Controller
             }
         }
 
-        // delete video in storage if exists
+        // delete video in storage if exists and substract course duration
         if(isset($lecture->videopath) && !empty($lecture->videopath)){
             Storage::delete( 'courses/' . $course->status . '/' . $course->storageName . '/' . $lecture->videopath);
+
+            $lduration = Carbon::createFromFormat('H:i:s', $lecture->video_duration);
+            $currentCourseDuration = Carbon::createFromFormat('H:i:s', $course->course_duration);
+            $course->course_duration = $currentCourseDuration->subSeconds($lduration->secondsSinceMidnight());
+            $course->save();
         }
 
         $lecture->delete();

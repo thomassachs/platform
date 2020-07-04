@@ -21,7 +21,7 @@
                     Lectures
                 @endif
             </small><br>
-            <small class="text-secondary">Course length: 0m</small>
+            <small class="text-secondary">Course length: {{ $course->course_duration }}</small>
         </div>
         <div class="col-md-3">
             Preview:
