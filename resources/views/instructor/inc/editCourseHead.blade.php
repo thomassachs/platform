@@ -16,6 +16,11 @@
             <p class="text-success">status: {{ $course->status }}</p>
 
         </div>
+        <div class="col-md-3">
+            Preview:
+            <a target="_blank" rel="noopener noreferrer" href="/instructor/preview/{{ $course->id }}/salespage" class="btn btn-success">Sales Page</a>
+            <a target="_blank" rel="noopener noreferrer" href="/instructor/preview/{{ $course->id }}/coursepage" class="btn btn-success">Course Page</a>
+        </div>
     </div>
 </div>
 <br>

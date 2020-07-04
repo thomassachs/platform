@@ -36,6 +36,10 @@ Route::get('/instructor/mycourses', 'InstructorController@myCourses');
 
 Route::get('/instructor/createcourse', 'InstructorController@createCourse');
 
+Route::get('/instructor/preview/{id}/salespage', 'InstructorController@previewCourseSale');
+
+Route::get('/instructor/preview/{id}/coursepage', 'InstructorController@previewCourseLearn');
+
 Route::get('/instructor/edit/{id}/general' , 'InstructorController@editGeneral');
 
 Route::get('/instructor/edit/{id}/description' , 'InstructorController@editDescription');

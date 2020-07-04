@@ -61,6 +61,32 @@ class InstructorController extends Controller
         return view('instructor.createCourse')->with('coursesInProgress', $coursesInProgress);
     }
 
+    public function previewCourseSale($id)
+    {
+        $course = Course::find($id);
+
+        // check if the guy who wants to preview a course is the author of the course and check if course exists
+        if( $course != NULL && $course->user_id == Auth::id()){
+            return view('instructor.inc.previewSale')->with('course', $course);
+        }else{
+            // if somebody tries to preview a course he doesnt own he gets redirected to the mycourses page
+            return redirect('/instructor/mycourses');
+        }
+    }
+
+    public function previewCourseLearn($id)
+    {
+        $course = Course::find($id);
+
+        // check if the guy who wants to preview a course is the author of the course and check if course exists
+        if( $course != NULL && $course->user_id == Auth::id()){
+            return view('instructor.inc.previewLearn')->with('course', $course);
+        }else{
+            // if somebody tries to preview a course he doesnt own he gets redirected to the mycourses page
+            return redirect('/instructor/mycourses');
+        }
+    }
+
     public function editGeneral($id)
     {
         $course = Course::find($id);
