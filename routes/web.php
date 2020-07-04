@@ -56,6 +56,13 @@ Route::resource('courses', 'CoursesController');
 
 Route::post('/course/{id}/changeimage', 'CoursesController@changeImage');
 
+
+// descriptionItem Route
+Route::post('/instructor/{id}/addRequirement', 'DescriptionItemsController@addRequirement');
+
+Route::post('/instructor/{id}/addLearnGoal', 'DescriptionItemsController@addLearnGoal');
+
+
 // section routes
 Route::get('section/{course_id}', 'SectionsController@create')->name('createSection');
 

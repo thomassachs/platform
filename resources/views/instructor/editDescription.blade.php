@@ -33,22 +33,55 @@
       {{-- description tab --}}
       <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
 
+          <br><br>
 
-          description
-          <div class="">
-            <video width="320" height="240" controls>
-                <source src="/storage/courses/inprogress/besser werden in lol/5aa3fa34cee2fdogs_1593264004.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-            </video>
-            <img style="width:100%" src="/storage/courses/inprogress/besser werden in lol/thumb-1920-673431_1593263850.jpg" alt="">
+          {{-- add what you will learn for course --}}
+          {!! Form::open(['action' => ['DescriptionItemsController@addLearnGoal', $course->id], 'method' => 'POST']) !!}
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Add learn goal</span>
+            </div>
+              {{ Form::text('learnGoal', '', ['class' => 'form-control', 'placeholder' => 'You will learn to be a ninja']) }}
+              {{ Form::submit('Add learn goal', ['class' => 'btn btn-primary']) }}
           </div>
+          {!! Form::close() !!}
 
+          {{-- add requirement for course --}}
+          {!! Form::open(['action' => ['DescriptionItemsController@addRequirement', $course->id], 'method' => 'POST']) !!}
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Add Requirement</span>
+            </div>
+              {{ Form::text('requirement', '', ['class' => 'form-control', 'placeholder' => 'You need to be at least 1.70m tall']) }}
+              {{ Form::submit('Add Requirement', ['class' => 'btn btn-primary']) }}
+          </div>
+          {!! Form::close() !!}
+
+          <div class="">
+              <h3>Requirements</h3>
+              @foreach ($course->descriptionItems as $descriptionItem)
+                  @if ($descriptionItem->type == "requirement")
+                      <p>{{ $descriptionItem->content }}</p>
+                  @endif
+              @endforeach
+
+              <h3>What you will learn</h3>
+              @foreach ($course->descriptionItems as $descriptionItem)
+                  @if ($descriptionItem->type == "learnGoal")
+                      <p>{{ $descriptionItem->content }}</p>
+                  @endif
+              @endforeach
+
+              <h3>Description</h3>
+              
+          </div>
       </div>
-
-    </div>
 
 
 </div>
+
+
+
 
     <!-- end row from sidebar -->
     </div>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lecture extends Model
 {
-    public function course()
+    public function section()
     {
         return $this->belongsTo('App\Section');
     }

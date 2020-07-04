@@ -3,7 +3,7 @@
         <div class="col-md-3">
 
             @if (!empty($course->imagePath))
-                <img src="/storage/courses/{{ $course->status }}/{{ $course->storageName }}/{{ $course->imagePath }}" width="250" height="150" alt="">
+                <img src="/storage/courses/{{ $course->status }}/{{ $course->storageName }}/{{ $course->imagePath }}" width="250" height="150" alt="no image found">
             @else
                 <img src="/storage/inc/demo-1.jpg" width="250" height="150" alt="">
             @endif
