@@ -16,6 +16,11 @@ class Course extends Model
         return $this->hasMany('App\Section');
     }
 
+    public function lectures()
+    {
+        return $this->hasManyThrough('App\Lecture', 'App\Section');
+    }
+
     public function descriptionItems()
     {
         return $this->hasMany('App\DescriptionItem');

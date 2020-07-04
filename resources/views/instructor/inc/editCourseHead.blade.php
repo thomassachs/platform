@@ -12,9 +12,16 @@
         <div class="col-md-6">
             <h2><u>{{ $course->title }}</u></h2>
             <br>
-            <br>
             <p class="text-success">status: {{ $course->status }}</p>
-
+            <small class="text-secondary">
+                {{ count($course->lectures) }}
+                @if (count($course->lectures) == 1)
+                    Lecture
+                @else
+                    Lectures
+                @endif
+            </small><br>
+            <small class="text-secondary">Course length: 0m</small>
         </div>
         <div class="col-md-3">
             Preview:
