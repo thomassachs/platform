@@ -14,7 +14,7 @@ class AddVideoDurationToLectures extends Migration
      public function up()
      {
          Schema::table('lectures', function (Blueprint $table) {
-             $table->time('video_duration',0);
+             $table->time('video_duration',0)->nullable();
          });
      }
 

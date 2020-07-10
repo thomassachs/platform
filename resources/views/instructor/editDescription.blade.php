@@ -58,22 +58,22 @@
           {!! Form::close() !!}
 
           <div class="">
-              <h3>Requirements</h3>
-              @foreach ($course->descriptionItems as $descriptionItem)
-                  @if ($descriptionItem->type == "requirement")
-                      <p>{{ $descriptionItem->content }}</p>
-                  @endif
-              @endforeach
-
               <h3>What you will learn</h3>
               @foreach ($course->descriptionItems as $descriptionItem)
                   @if ($descriptionItem->type == "learnGoal")
-                      <p>{{ $descriptionItem->content }}</p>
+                      <li class="ml-5">{{ $descriptionItem->content }}</li>
+                  @endif
+              @endforeach
+
+              <h3>Requirements</h3>
+              @foreach ($course->descriptionItems as $descriptionItem)
+                  @if ($descriptionItem->type == "requirement")
+                      <li class="ml-5">{{ $descriptionItem->content }}</li>
                   @endif
               @endforeach
 
               <h3>Description</h3>
-              
+
           </div>
       </div>
 

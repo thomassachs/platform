@@ -60,6 +60,8 @@ Route::resource('courses', 'CoursesController');
 
 Route::post('/course/{id}/changeimage', 'CoursesController@changeImage');
 
+Route::post('/course/{id}/editPrice', 'CoursesController@editPrice');
+
 
 // descriptionItem Route
 Route::post('/instructor/{id}/addRequirement', 'DescriptionItemsController@addRequirement');
@@ -85,5 +87,7 @@ Route::post('lecture/{section_id}/{course_id}', 'LecturesController@store')->nam
 Route::get('moveLectureUp/{lecture_id}', 'LecturesController@moveUp')->name('moveUpLecture');
 
 Route::get('moveLectureDown/{lecture_id}', 'LecturesController@moveDown')->name('moveDownLecture');
+
+Route::post('renamelecture/{lecture_id}/{course_id}', 'LecturesController@rename')->name('renameLecture');
 
 Route::get('lectureDestroy/{lecture_id}', 'LecturesController@destroy')->name('destroyLecture');

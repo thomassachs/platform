@@ -27,7 +27,7 @@
             <div class="card bg-seco mb-3" style="width: 100%;">
                 <div class="card-header">{{ $section->position }}. {{ $section->name }}
                     <button type="button" class="btn btn-primary float-right" name="button" data-toggle="modal" data-target="#addLectureModal{{ $section->id }}">add lecture</button>
-                    <button type="button" class="btn btn-secondary float-right mr-3" name="button" data-toggle="modal" data-target="#renameSectionModal{{ $section->id }}">rename section</button>
+                    <button type="button" class="btn btn-secondary float-right mr-3" name="button" data-toggle="modal" data-target="#renameSectionModal{{ $section->id }}"><i class="fas fa-edit"></i></button>
                     <button type="button" class="btn btn-danger float-right mr-3" name="button" data-toggle="modal" data-target="#deleteSectionModal{{ $section->id }}"><i class="fas fa-trash-alt"></i></button>
                     @if ($course->sections->max('position') != $section->position)
                         <a href="{{ action('SectionsController@moveDown', $section->id) }}" class="btn btn-primary float-right mr-3">
@@ -59,11 +59,18 @@
                                     @endif
 
                                     {{ $section->position }}.{{ $lecture->position }} <span class="ml-4">{{ $lecture->name }}</span>
+                                    @if ($lecture->video_duration !=  NULL)
+                                        <button class="btn btn-secondary " type="button" name="button" data-toggle="modal" data-target="#watchLectureVideoModal{{ $lecture->id }}"><i class="fas fa-video"></i></button>
+                                        <span><small class="text-secondary">{{ date('s', strtotime($lecture->video_duration))  }}s</small></span>
+                                    @endif
 
                                     <button type="button" class="btn btn-danger float-right mr-3" name="button" data-toggle="modal" data-target="#deleteLectureModal{{ $lecture->id }}"><i class="fas fa-trash-alt"></i></button>
+                                    <button type="button" class="btn btn-secondary float-right mr-3" name="button" data-toggle="modal" data-target="#renameLectureModal{{ $lecture->id }}"><i class="fas fa-edit"></i></button>
 
-                                    {{-- modal for delete lecture --}}
+                                    {{-- modal for edit and delete lecture --}}
+                                    @include('instructor.modals.renameLectureModal')
                                     @include('instructor.modals.deleteLectureModal')
+                                    @include('instructor.modals.watchLectureVideoModal')
 
                                     @if ($section->lectures->max('position') != $lecture->position)
                                         <a href="{{ action('LecturesController@moveDown', $lecture->id) }}" class="btn btn-primary float-right mr-3 ">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Section;
 use App\Lecture;
 use App\Course;
+use Carbon\Carbon;
 
 class SectionsController extends Controller
 {
@@ -47,13 +48,25 @@ class SectionsController extends Controller
     public function destroy($id)
     {
         $section = Section::find($id);
+        $course = Course::find($section->course_id);
+
+        $subTimeFromCourse = 0;
         // delete all lectures of the section
         foreach ($section->lectures as $lecture) {
+
+            // substract the lecture video duration from course duration
+            if($lecture->video_duration != NULL){
+                $lduration = Carbon::createFromFormat('H:i:s', $lecture->video_duration);
+                $subTimeFromCourse += $lduration->secondsSinceMidnight();
+
+            }
+
             $lecture->delete();
         }
 
-
-        $course = Course::find($section->course_id);
+        $currentCourseDuration = Carbon::createFromFormat('H:i:s', $course->course_duration);
+        $course->course_duration = $currentCourseDuration->subSeconds($subTimeFromCourse);
+        $course->save();
 
         // set sections with higher position one position down
         foreach ($course->sections as $otherSection) {

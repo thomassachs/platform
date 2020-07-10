@@ -174,4 +174,15 @@ class CoursesController extends Controller
 
         return redirect('/instructor/edit/' . $course->id . '/general')->with('success', 'Course Image Changed');
     }
+
+    public function editPrice(request $request ,$id)
+    {
+        $course = Course::find($id);
+
+        $course->price = $request->input('price');
+
+        $course->save();
+
+        return redirect('/instructor/edit/' . $id . '/pricing')->with('success', 'Course Price Changed');
+    }
 }

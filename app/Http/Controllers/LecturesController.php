@@ -122,6 +122,20 @@ class LecturesController extends Controller
         return redirect('/instructor/edit/' . $section->course_id . '/lectures')->with('success', 'Lecture moved downwards' );
     }
 
+    public function rename(Request $request, $lectureId, $courseId)
+    {
+        // validate the input of the instructor
+        $this->validate($request, [
+            'lectureName' => ['required', 'max:255'],
+        ]);
+
+        $lecture = Lecture::find($lectureId);
+        $lecture->name = $request->input('lectureName');
+        $lecture->save();
+
+        return redirect('/instructor/edit/' . $courseId . '/lectures');
+    }
+
     public function destroy($id)
     {
         $lecture = Lecture::find($id);

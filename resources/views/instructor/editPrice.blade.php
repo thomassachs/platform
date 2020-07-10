@@ -33,8 +33,18 @@
         <div class="col-md-6">
             {{-- general tab --}}
             <div class="tab-content" id="myTabContent">
-                this is the pricing stuff
-            </div>
+                <p>the current price for your course is: {{ $course->price }}</p>
+                <br><br><br>
+                you can change the price here: <div class="input-group mb-3">
+                    {!! Form::open(['action' => ['CoursesController@editPrice', $course->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+
+                    <div class="input-group mb-3">
+
+                        {!! Form::select('price',['4.99' => '4.99$','9.99'=>'9.99$','14.99'=>'14.99$','19.99'=>'19.99$'],$course->price . '$',['class'=>'form-control','placeholder'=>$course->price. '$']) !!}
+                        {{ Form::submit('Change Price', ['class' => 'btn btn-primary']) }}
+                    </div>
+
+
         </div>
         <div class="col-md-3">
 

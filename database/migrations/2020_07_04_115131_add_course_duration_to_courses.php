@@ -14,7 +14,7 @@ class AddCourseDurationToCourses extends Migration
     public function up()
     {
         Schema::table('courses', function (Blueprint $table) {
-            $table->time('course_duration',0);
+            $table->time('course_duration',0)->default('00:00:00');
         });
     }
 
