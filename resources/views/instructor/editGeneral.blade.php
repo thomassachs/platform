@@ -59,7 +59,7 @@
             <br>
             <p>Your current Course Thumbnail:</p>
             @if (!empty($course->imagePath))
-                <img src="/storage/courses/{{ $course->status }}/{{ $course->storageName }}/{{ $course->imagePath }}" width="300" height="200" alt="">
+                <img src="{{ config('app.storage') }}/courses/{{ $course->status }}/{{ $course->storageName }}/{{ $course->imagePath }}" width="300" height="200" alt="">
             @else
                 <img src="/storage/inc/demo-1.jpg" width="300" height="200" alt="">
             @endif
