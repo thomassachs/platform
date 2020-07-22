@@ -185,4 +185,17 @@ class CoursesController extends Controller
 
         return redirect('/instructor/edit/' . $id . '/pricing')->with('success', 'Course Price Changed');
     }
+
+    public function submitCourse($id)
+    {
+        $course = Course::find($id);
+
+        $course->status = 'pending';
+
+        Storage::move('/public/courses/inprogress/' . $course->storageName, '/public/courses/pending/' . $course->storageName, $overwrite = true);
+
+        $course->save();
+
+        return redirect('instructor/mycourses')->with('success', 'Course submitted succesfully');
+    }
 }

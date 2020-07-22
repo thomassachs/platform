@@ -154,7 +154,7 @@ class LecturesController extends Controller
 
         // delete video in storage if exists and substract course duration
         if(isset($lecture->videopath) && !empty($lecture->videopath)){
-            Storage::delete( 'courses/' . $course->status . '/' . $course->storageName . '/' . $lecture->videopath);
+            Storage::delete( '/public/courses/' . $course->status . '/' . $course->storageName . '/' . $lecture->videopath);
 
             $lduration = Carbon::createFromFormat('H:i:s', $lecture->video_duration);
             $currentCourseDuration = Carbon::createFromFormat('H:i:s', $course->course_duration);

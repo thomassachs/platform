@@ -106,8 +106,11 @@
             </div>
         </div>
         <div class="col-md-3">
+            <br><br>
+            <button type="button" class="btn btn-primary float-right" name="button" data-toggle="modal" data-target="#submitCourseModal">Submit Course</button>
 
-
+            {{-- modal for submit Course --}}
+            @include('instructor.modals.submitCourseModal')
         </div>
         <div class="col-md-3">
 

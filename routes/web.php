@@ -40,15 +40,15 @@ Route::get('/instructor/preview/{id}/salespage', 'InstructorController@previewCo
 
 Route::get('/instructor/preview/{id}/coursepage', 'InstructorController@previewCourseLearn');
 
-Route::get('/instructor/edit/{id}/general' , 'InstructorController@editGeneral');
+Route::get('/instructor/edit/{id}/general' , 'InstructorController@editGeneral')->middleware('isPending');
 
-Route::get('/instructor/edit/{id}/description' , 'InstructorController@editDescription');
+Route::get('/instructor/edit/{id}/description' , 'InstructorController@editDescription')->middleware('isPending');
 
-Route::get('/instructor/edit/{id}/lectures', 'InstructorController@editLectures');
+Route::get('/instructor/edit/{id}/lectures', 'InstructorController@editLectures')->middleware('isPending');
 
-Route::get('/instructor/edit/{id}/pricing', 'InstructorController@editPrice');
+Route::get('/instructor/edit/{id}/pricing', 'InstructorController@editPrice')->middleware('isPending');
 
-Route::get('/instructor/edit/{id}/submit', 'InstructorController@submitCourse');
+Route::get('/instructor/edit/{id}/submit', 'InstructorController@submitCourse')->middleware('isPending');
 
 
 // courses routes
@@ -61,6 +61,8 @@ Route::resource('courses', 'CoursesController');
 Route::post('/course/{id}/changeimage', 'CoursesController@changeImage');
 
 Route::post('/course/{id}/editPrice', 'CoursesController@editPrice');
+
+Route::post('/course/{id}/submitCourse', 'CoursesController@submitCourse');
 
 
 // descriptionItem Route
