@@ -19,7 +19,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">No, bring me back</button>
-        {!!Form::open(['action' => ['SectionsController@destroy', $section->id], 'method' => 'GET', 'class' => 'pull-right'])!!}
+        {!!Form::open(['action' => ['SectionsController@destroy', $section->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
             {{Form::submit('Delete the whole section', ['class' => 'btn btn-danger'])}}
         {!!Form::close()!!}
       </div>

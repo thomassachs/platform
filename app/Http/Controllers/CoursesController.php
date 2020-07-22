@@ -16,6 +16,8 @@ class CoursesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+
     public function index()
     {
         //
@@ -127,15 +129,22 @@ class CoursesController extends Controller
     public function destroy($id)
     {
         $course = Course::find($id);
-        Storage::deleteDirectory('courses/' . $course->status . '/' . $course->storageName);
-        foreach ($course->sections as $section) {
-            foreach ($section->lectures as $lecture) {
-                $lecture->delete();
+
+        if($course->status === 'inprogress'){
+            Storage::deleteDirectory('courses/' . $course->status . '/' . $course->storageName);
+            foreach ($course->sections as $section) {
+                foreach ($section->lectures as $lecture) {
+                    $lecture->delete();
+                }
+                $section->delete();
             }
-            $section->delete();
+            $course->delete();
+            return redirect('/instructor/mycourses/')->with('success', 'Course Removed');
+        }else{
+            return redirect('/instructor/mycourses/')->with('danger', 'You can only delete your course if its not submitted');
         }
-        $course->delete();
-        return redirect('/instructor/mycourses/')->with('success', 'Course Removed');
+
+
     }
 
     public function changeImage(Request $request, $id)

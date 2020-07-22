@@ -8,7 +8,7 @@
 <br><br>
 </div>
         {{-- create a new section --}}
-        {!! Form::open(['action' => ['SectionsController@create', $course->id], 'method' => 'GET']) !!}
+        {!! Form::open(['action' => ['SectionsController@create', $course->id], 'method' => 'POST']) !!}
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Create new Section</span>
@@ -73,15 +73,27 @@
                                     @include('instructor.modals.watchLectureVideoModal')
 
                                     @if ($section->lectures->max('position') != $lecture->position)
-                                        <a href="{{ action('LecturesController@moveDown', $lecture->id) }}" class="btn btn-primary float-right mr-3 ">
-                                            <i class="fas fa-arrow-down"></i>
-                                        </a>
+                                        <div class=" float-right mr-3">
+
+                                        {!! Form::open(['action' => ['LecturesController@moveDown', $lecture->id], 'method' => 'POST']) !!}
+
+                                            {{ Form::button('<i class="fas fa-arrow-down"></i>', ['type' => 'submit', 'class' => 'btn btn-primary float-right '] )  }}
+
+                                        {!! Form::close() !!}
+                                        </div>
+
 
                                     @endif
                                     @if ($lecture->position != 1)
-                                        <a href="{{ action('LecturesController@moveUp', $lecture->id) }}" class="btn btn-primary float-right mr-3">
-                                            <i class="fas fa-arrow-up"></i>
-                                        </a>
+                                        <div class="float-right mr-3">
+
+                                        {!! Form::open(['action' => ['LecturesController@moveUp', $lecture->id], 'method' => 'POST']) !!}
+
+                                            {{ Form::button('<i class="fas fa-arrow-up"></i>', ['type' => 'submit', 'class' => 'btn btn-primary float-right '] )  }}
+
+                                        {!! Form::close() !!}
+                                        </div>  
+
                                     @endif
                                 </div>
 

@@ -72,24 +72,24 @@ Route::post('/instructor/{id}/addLearnGoal', 'DescriptionItemsController@addLear
 
 
 // section routes
-Route::get('section/{course_id}', 'SectionsController@create')->name('createSection');
+Route::post('section/{course_id}', 'SectionsController@create')->name('createSection');
 
-Route::get('section/{section_id}/{course_id}', 'SectionsController@rename')->name('renameSection');
+Route::post('section/{section_id}/{course_id}', 'SectionsController@rename')->name('renameSection');
 
-Route::get('moveSectionUp/{section_id}', 'SectionsController@moveUp')->name('moveUpSection');
+Route::post('moveSectionUp/{section_id}', 'SectionsController@moveUp')->name('moveUpSection');
 
-Route::get('moveSectionDown/{section_id}', 'SectionsController@moveDown')->name('moveDownSection');
+Route::post('moveSectionDown/{section_id}', 'SectionsController@moveDown')->name('moveDownSection');
 
-Route::get('sectionDestroy/{section_id}', 'SectionsController@destroy')->name('destroySection');
+Route::post('sectionDestroy/{section_id}', 'SectionsController@destroy')->name('destroySection');
 
 
 // lecture routes
 Route::post('lecture/{section_id}/{course_id}', 'LecturesController@store')->name('storeLecture');
 
-Route::get('moveLectureUp/{lecture_id}', 'LecturesController@moveUp')->name('moveUpLecture');
+Route::post('moveLectureUp/{lecture_id}', 'LecturesController@moveUp')->name('moveUpLecture');
 
-Route::get('moveLectureDown/{lecture_id}', 'LecturesController@moveDown')->name('moveDownLecture');
+Route::post('moveLectureDown/{lecture_id}', 'LecturesController@moveDown')->name('moveDownLecture');
 
 Route::post('renamelecture/{lecture_id}/{course_id}', 'LecturesController@rename')->name('renameLecture');
 
-Route::get('lectureDestroy/{lecture_id}', 'LecturesController@destroy')->name('destroyLecture');
+Route::post('lectureDestroy/{lecture_id}', 'LecturesController@destroy')->name('destroyLecture');

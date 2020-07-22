@@ -11,7 +11,7 @@
 
 
       {{-- rename section form --}}
-      {!! Form::open(['action' => ['SectionsController@rename', $section->id, $course->id], 'method' => 'GET']) !!}
+      {!! Form::open(['action' => ['SectionsController@rename', $section->id, $course->id], 'method' => 'POST']) !!}
       <div class="modal-body">
 
           <div class="form-group mb-3">
