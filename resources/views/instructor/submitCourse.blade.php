@@ -109,7 +109,7 @@
             @if (count($course->sections) > 0
                 && count($course->lectures) > 0
                 && $emptySections === 0
-                && (date('H', strtotime($course->course_duration)) > 0 || date('i', strtotime($course->course_duration)) >= 30)
+                // && (date('H', strtotime($course->course_duration)) > 0 || date('i', strtotime($course->course_duration)) >= 30)
                 && !empty($course->imagePath)
                 && !empty($course->description))
 

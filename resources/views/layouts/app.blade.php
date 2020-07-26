@@ -32,6 +32,10 @@
             @yield('instructorContent')
         </main>
 
+        <main class="mt-5">
+            @yield('adminContent')
+        </main>
+
     </div>
 </body>
 </html>

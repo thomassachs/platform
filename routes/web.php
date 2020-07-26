@@ -95,3 +95,9 @@ Route::post('moveLectureDown/{lecture_id}', 'LecturesController@moveDown')->name
 Route::post('renamelecture/{lecture_id}/{course_id}', 'LecturesController@rename')->name('renameLecture');
 
 Route::post('lectureDestroy/{lecture_id}', 'LecturesController@destroy')->name('destroyLecture');
+
+// Admin Routes
+
+Route::get('/admin' , 'AdminsController@index');
+
+Route::get('/admin/pendingcourses' , 'AdminsController@showPendingCourses');
