@@ -57,6 +57,18 @@
           </div>
           {!! Form::close() !!}
 
+          {{-- add or edit description for course --}}
+          {!! Form::open(['action' => ['CoursesController@editDescription', $course->id], 'method' => 'POST']) !!}
+              <div class="form-group">
+                  {{ Form::label('description', 'Description') }}
+                  {{ Form::textarea('description', $course->description, ['class' => 'form-control', 'placeholder' => $course->description]) }}
+              </div>
+
+              {{ Form::submit('Edit', ['class' => 'btn btn-primary']) }}
+          {!! Form::close() !!}
+
+          <br><br><br>
+
           <div class="">
               <h3>What you will learn</h3>
               @foreach ($course->descriptionItems as $descriptionItem)
@@ -73,6 +85,7 @@
               @endforeach
 
               <h3>Description</h3>
+              {{ $course->description }}
 
           </div>
       </div>

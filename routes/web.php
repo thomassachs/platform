@@ -62,6 +62,8 @@ Route::post('/course/{id}/changeimage', 'CoursesController@changeImage');
 
 Route::post('/course/{id}/editPrice', 'CoursesController@editPrice');
 
+Route::post('/course/{id}/editDescription', 'CoursesController@editDescription');
+
 Route::post('/course/{id}/submitCourse', 'CoursesController@submitCourse');
 
 

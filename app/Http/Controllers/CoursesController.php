@@ -16,7 +16,7 @@ class CoursesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
 
     public function index()
     {
@@ -188,9 +188,13 @@ class CoursesController extends Controller
     {
         $course = Course::find($id);
 
-        $course->price = $request->input('price');
+        if(!empty($request->input('price'))){
 
-        $course->save();
+            $course->price = $request->input('price');
+
+            $course->save();
+        }
+
 
         return redirect('/instructor/edit/' . $id . '/pricing')->with('success', 'Course Price Changed');
     }
@@ -206,5 +210,17 @@ class CoursesController extends Controller
         $course->save();
 
         return redirect('instructor/mycourses')->with('success', 'Course submitted succesfully');
+    }
+
+    public function editDescription(request $request, $id)
+    {
+        $course = Course::find($id);
+
+        $course->description = $request->input('description');
+
+        $course->save();
+
+        return redirect('instructor/edit/' . $id .'/description')->with('success', 'Description changed succesfully');
+
     }
 }

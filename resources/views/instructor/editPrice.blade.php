@@ -40,7 +40,7 @@
 
                     <div class="input-group mb-3">
 
-                        {!! Form::select('price',['4.99' => '4.99$','9.99'=>'9.99$','14.99'=>'14.99$','19.99'=>'19.99$'],$course->price . '$',['class'=>'form-control','placeholder'=>$course->price. '$']) !!}
+                        {!! Form::select('price',['0' => '0$','4.99' => '4.99$','9.99'=>'9.99$','14.99'=>'14.99$','19.99'=>'19.99$'],$course->price . '$',['class'=>'form-control','placeholder'=>$course->price. '$']) !!}
                         {{ Form::submit('Change Price', ['class' => 'btn btn-primary']) }}
                     </div>
 

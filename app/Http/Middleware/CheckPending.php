@@ -21,7 +21,7 @@ class CheckPending
         $course = Course::find($courseId);
 
         if($course->status === 'pending'){
-            return redirect('instructor/mycourses');
+            return redirect('instructor/mycourses')->with('error', 'cant edit or delete while pending');
         }
 
         return $next($request);

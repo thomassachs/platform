@@ -8,6 +8,7 @@
 
     <h1>My Courses</h1>
 
+    @include('inc.messages')
 
     {{-- looking if user has created any courses --}}
     @if(count($courses) > 0)

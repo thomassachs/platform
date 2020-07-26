@@ -59,7 +59,6 @@
                       <th scope="row">No empty Section</th>
                       @php
                           $emptySections = 0;
-                          var_dump( $course->course_duration);
                       @endphp
                       @foreach ($course->sections as $section)
                           @if (count($section->lectures) === 0)
@@ -77,7 +76,7 @@
 
                     <tr>
                       <th scope="row">Atleast 30 minutes course content</th>
-                      @if (date('H', strtotime($course->course_duration)) > 0 || date('i', strtotime($course->course_duration)) > 30)
+                      @if (date('H', strtotime($course->course_duration)) > 0 || date('i', strtotime($course->course_duration)) >= 30)
                           <td><i class="fas fa-check text-success"></i></td>
                       @else
                           <td><i class="fas fa-times text-danger"></i></td>
@@ -107,7 +106,20 @@
         </div>
         <div class="col-md-3">
             <br><br>
-            <button type="button" class="btn btn-primary float-right" name="button" data-toggle="modal" data-target="#submitCourseModal">Submit Course</button>
+            @if (count($course->sections) > 0
+                && count($course->lectures) > 0
+                && $emptySections === 0
+                && (date('H', strtotime($course->course_duration)) > 0 || date('i', strtotime($course->course_duration)) >= 30)
+                && !empty($course->imagePath)
+                && !empty($course->description))
+
+                <button type="button" class="btn btn-primary float-right" name="button" data-toggle="modal" data-target="#submitCourseModal">Submit Course</button>
+            @else
+                <button type="button" class="btn btn-primary float-right"  disabled>Submit Course</button>
+
+            @endif
+
+
 
             {{-- modal for submit Course --}}
             @include('instructor.modals.submitCourseModal')
