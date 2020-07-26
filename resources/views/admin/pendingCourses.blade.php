@@ -41,6 +41,9 @@
                             <br>
                             <br>
                             Price: {{ $course->price }}
+                            <button type="button" class="btn btn-primary float-right" name="button" data-toggle="modal" data-target="#approveCourseModal{{ $course->id }}">APPROVE</button>
+                            {{-- modal for approve course --}}
+                            @include('admin.modals.approveCourseModal')
                         </div>
                     </div>
                 </div>

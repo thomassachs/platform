@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Course;
 
 class HomeController extends Controller
 {
@@ -21,6 +22,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+     public function home()
+     {
+         $courses = Course::where('status', 'approved')->get();
+
+         return view('index')->with('courses', $courses);
+     }
+
     public function index()
     {
         return view('account');
@@ -30,4 +38,5 @@ class HomeController extends Controller
     {
         return view('instructor');
     }
+
 }

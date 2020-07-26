@@ -18,9 +18,8 @@ Route::get('locale/{locale}', function ($locale){
     return redirect()->back();
 });
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'HomeController@home');
+
 
 Auth::routes(['verify' => true]);
 
@@ -96,8 +95,10 @@ Route::post('renamelecture/{lecture_id}/{course_id}', 'LecturesController@rename
 
 Route::post('lectureDestroy/{lecture_id}', 'LecturesController@destroy')->name('destroyLecture');
 
-// Admin Routes
 
+// Admin Routes
 Route::get('/admin' , 'AdminsController@index');
 
 Route::get('/admin/pendingcourses' , 'AdminsController@showPendingCourses');
+
+Route::post('/admin/approveCourse/{id}' , 'AdminsController@approveCourse');
