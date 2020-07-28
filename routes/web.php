@@ -18,7 +18,7 @@ Route::get('locale/{locale}', function ($locale){
     return redirect()->back();
 });
 
-Route::get('/', 'HomeController@home');
+Route::get('/', 'PagesController@home');
 
 
 Auth::routes(['verify' => true]);

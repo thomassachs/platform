@@ -4,7 +4,7 @@
 
 
 <div class="">
-    this is the course {{$courseName}}
+    this is the course {{$course->title}} and it has {{ count($course->lectures) }} lectures
 </div>
 
 

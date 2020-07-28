@@ -30,7 +30,7 @@ this is the front page <i class="fas fa-star"></i>
 
                         </div>
                         <div class="col-md-6">
-                            <h2><u>{{ $course->title }}</u></h2>
+                            <h2><u><a href="/course/{{ $course->storageName }}">{{ $course->title }}</a></u></h2>
                             <br>
                             <p class="text-success">status: {{ $course->status }}</p>
                             <small class="text-secondary">
