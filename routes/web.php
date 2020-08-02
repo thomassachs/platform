@@ -53,7 +53,7 @@ Route::get('/instructor/edit/{id}/submit', 'InstructorController@submitCourse')-
 // courses routes
 Route::get('/course/{courseName}', 'PagesController@coursePage');
 
-Route::get('/course/{courseName}', 'PagesController@coursePage');
+Route::get('/course/{courseName}/checkout', 'PagesController@courseCheckout');
 
 Route::resource('courses', 'CoursesController');
 

@@ -7,12 +7,6 @@ use App\Course;
 
 class PagesController extends Controller
 {
-    public function coursePage($courseStorageName)
-    {
-        $course = Course::firstWhere('storageName', $courseStorageName);
-
-        return view('course')->with('course', $course);
-    }
 
     public function home()
     {
@@ -21,5 +15,18 @@ class PagesController extends Controller
         return view('index')->with('courses', $courses);
     }
 
+    public function coursePage($courseStorageName)
+    {
+        $course = Course::firstWhere('storageName', $courseStorageName);
+
+        return view('course')->with('course', $course);
+    }
+
+    public function courseCheckout($courseStorageName)
+    {
+        $course = Course::firstWhere('storageName', $courseStorageName);
+
+        return view('courseCheckout')->with('course', $course);
+    }
 
 }
