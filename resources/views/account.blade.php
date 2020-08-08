@@ -27,5 +27,19 @@
             </div>
         </div>
     </div>
+
+    <h2>My Courses:</h2>
+
+    <div class="">
+        @foreach ($user->payments as $payment)
+            <br>
+            <h5>{{ $payment->course->title }}</h5>
+            <br>
+            @foreach ($payment->course->sections as $section)
+                {{-- {{ $section->name }} --}}
+            @endforeach
+            <br>
+        @endforeach
+    </div>
 </div>
 @endsection

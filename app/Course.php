@@ -26,5 +26,10 @@ class Course extends Model
         return $this->hasMany('App\DescriptionItem');
     }
 
+    public function payment()
+    {
+        return $this->hasMany('App\Payment');
+    }
+
 
 }

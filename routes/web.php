@@ -102,3 +102,12 @@ Route::get('/admin' , 'AdminsController@index');
 Route::get('/admin/pendingcourses' , 'AdminsController@showPendingCourses');
 
 Route::post('/admin/approveCourse/{id}' , 'AdminsController@approveCourse');
+
+
+
+// paypal routes
+
+Route::get('payment', 'PaymentController@index');
+Route::post('charge/{course_id}', 'PaymentController@charge');
+Route::get('paymentsuccess/{course_id}', 'PaymentController@payment_success');
+Route::get('paymenterror', 'PaymentController@payment_error');

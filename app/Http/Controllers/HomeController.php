@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Course;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -26,7 +28,13 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('account');
+        $userId = Auth::id();
+        $user = User::find($userId);
+
+        
+
+
+        return view('account')->with( 'user', $user);
     }
 
     public function instructor()
