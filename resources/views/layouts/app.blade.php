@@ -24,7 +24,7 @@
     <link href="{{ asset('css/vertical-responsive-menu.min.css') }}" rel="stylesheet"> --}}
 
     <!-- Stylesheets -->
-	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
+	{{-- <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'> --}}
 	<link href='vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
 	<link href="css/vertical-responsive-menu.min.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
