@@ -25,6 +25,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('/account', 'HomeController@index')->name('account');
 
+Route::get('/zwischenspeicherblade', 'HomeController@zwischenspeicher');
+
 
 // instructor routes
 Route::get('/instructor', 'InstructorController@instructor');

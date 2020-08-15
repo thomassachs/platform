@@ -31,7 +31,7 @@ class HomeController extends Controller
         $userId = Auth::id();
         $user = User::find($userId);
 
-        
+
 
 
         return view('account')->with( 'user', $user);
@@ -40,6 +40,11 @@ class HomeController extends Controller
     public function instructor()
     {
         return view('instructor');
+    }
+
+    public function zwischenspeicher()
+    {
+        return view('zwischenspeicherblade');
     }
 
 }
