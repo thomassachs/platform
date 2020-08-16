@@ -1,77 +1,70 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+    	<!-- Signup Start -->
+    	<div class="sign_in_up_bg">
+    		<div class="container">
+    			<div class="row justify-content-lg-center justify-content-md-center">
+    				<div class="col-lg-12">
+    					<div class="main_logo25" id="logo">
+    						<a href="/"><img src="images/logo.svg" alt=""></a>
+    						<a href="/"><img class="logo-inverse" src="images/ct_logo.svg" alt=""></a>
+    					</div>
+    				</div>
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+    				<div class="col-lg-6 col-md-8">
+    					<div class="sign_form">
+    						<h2>Welcome to Gamer Champ</h2>
+    						<p>Sign Up and Start Learning!</p>
+    						<form method="POST" action="{{ route('register') }}">
+                                @csrf
+    							<div class="ui search focus">
+    								<div class="ui left icon input swdh11 swdh19">
+    									<input class="prompt srch_explore @error('name') is-invalid @enderror" type="text" name="name"  value="{{ old('name') }}" id="name" required autocomplete="name" autofocus maxlength="64" placeholder="Full Name">
+                                        @error('name')
+                                            <span class="" style="color:red;" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+    								</div>
+    							</div>
+    							<div class="ui search focus mt-15">
+    								<div class="ui left icon input swdh11 swdh19">
+    									<input class="prompt srch_explore @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" id="email" required  autocomplete="email" maxlength="64" placeholder="Email Address">
+                                        @error('email')
+                                            <span class="" style="color:red;" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+    								</div>
+    							</div>
+    							<div class="ui search focus mt-15">
+    								<div class="ui left icon input swdh11 swdh19">
+    									<input class="prompt srch_explore @error('password') is-invalid @enderror" type="password" name="password" value="" id="password" required="" maxlength="64" placeholder="Password" autocomplete="new-password">
+    								</div>
+                                    @error('password')
+                                        <span class="" style="color:red;" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+    							</div>
+    							<div class="ui search focus mt-15">
+    								<div class="ui left icon input swdh11 swdh19">
+    									<input class="prompt srch_explore" id="password-confirm" type="password" name="password_confirmation" value="" required="" maxlength="64" placeholder="Confirm Password" autocomplete="new-password">
+    								</div>
+    							</div>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+    							<button class="login-btn" type="submit">Next</button>
+    						</form>
+    						<p class="sgntrm145">By signing up, you agree to our <a href="terms_of_use.html">Terms of Use</a> and <a href="terms_of_use.html">Privacy Policy</a>.</p>
+    						<p class="mb-0 mt-30">Already have an account? <a href="/login">Log In</a></p>
+    					</div>
+    					<div class="sign_footer"><img src="images/sign_logo.png" alt="">© 2020 <strong>Cursus</strong>. All Rights Reserved.</div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    	<!-- Signup End -->
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
