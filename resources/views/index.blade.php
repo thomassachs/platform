@@ -19,7 +19,7 @@
                                             <div class="item">
         										<div class="fcrse_1 mb-20">
         											<a href="/course/{{ $course->storageName }}" class="fcrse_img">
-        												<img src="storage/courses/{{ $course->status }}/{{ $course->storageName }}/{{ $course->imagePath }}" alt="">
+        												<img src="storage/courses/{{ $course->status }}/{{ $course->storageName }}/{{ $course->imagePath }}" alt=""  height="200">
         												<div class="course-overlay">
         													<div class="badge_seller">Bestseller</div>
         													<div class="crse_reviews">
@@ -56,7 +56,7 @@
         									</div>
                                         @endforeach
 
-    									
+
     								</div>
     							</div>
     						</div>
