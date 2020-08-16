@@ -32,8 +32,8 @@
 			<span class="collapse_menu--label"></span>
 		</button>
 		<div class="main_logo" id="logo">
-			<a href="/"><img src="images/logo.svg" alt=""></a>
-			<a href="/"><img class="logo-inverse" src="images/ct_logo.svg" alt=""></a>
+			<a href="/"><img src="{{ asset('images/logo.svg') }}" alt=""></a>
+			<a href="/"><img class="logo-inverse" src="{{ asset('images/ct_logo.svg') }}" alt=""></a>
 		</div>
 		<div class="search120">
 			<div class="ui search">
@@ -70,7 +70,7 @@
                         {{-- account icon mit dropdown --}}
                         <li class="ui dropdown">
         					<a href="#" class="opts_account">
-        						<img src="images/hd_dp.jpg" alt="">
+        						<img src="{{ asset('images/hd_dp.jpg') }}" alt="">
         					</a>
         					<div class="menu dropdown_account">
         						<div class="channel_my">
