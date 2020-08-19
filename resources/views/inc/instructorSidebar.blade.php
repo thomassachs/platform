@@ -4,75 +4,51 @@
 			<div class="left_section">
 				<ul>
 					<li class="menu--item">
-						<a href="instructor_dashboard.html" class="menu--link" title="Dashboard">
+						<a href="{{ url('instructor') }}" class="menu--link {{ \Request::is('instructor') ? 'active' : ''}}" title="Dashboard">
 							<i class="uil uil-apps menu--icon"></i>
 							<span class="menu--label">Dashboard</span>
 						</a>
 					</li>
 					<li class="menu--item">
-						<a href="instructor_courses.html" class="menu--link" title="Courses">
+						<a href="{{ url('instructor/mycourses') }}" class="menu--link {{ \Request::is('instructor/mycourses') ? 'active' : ''}}" title="Courses">
 							<i class='uil uil-book-alt menu--icon'></i>
-							<span class="menu--label">Courses</span>
+							<span class="menu--label">My Courses</span>
 						</a>
 					</li>
 					<li class="menu--item">
-						<a href="instructor_analyics.html" class="menu--link active" title="Analyics">
-							<i class='uil uil-analysis menu--icon'></i>
-							<span class="menu--label">Analyics</span>
-						</a>
-					</li>
-					<li class="menu--item">
-						<a href="create_new_course.html" class="menu--link" title="Create Course">
+						<a href="{{ url('instructor/createcourse') }}" class="menu--link {{ \Request::is('instructor/createcourse') ? 'active' : ''}}" title="Create Course">
 							<i class='uil uil-plus-circle menu--icon'></i>
 							<span class="menu--label">Create Course</span>
 						</a>
 					</li>
 					<li class="menu--item">
-						<a href="instructor_messages.html" class="menu--link" title="Messages">
-							<i class='uil uil-comments menu--icon'></i>
-							<span class="menu--label">Messages</span>
+						<a href="{{ url('instructor/analytics') }}" class="menu--link {{ \Request::is('instructor/analytics') ? 'active' : ''}}" title="Analyics">
+							<i class='uil uil-analysis menu--icon'></i>
+							<span class="menu--label">Analytics</span>
 						</a>
 					</li>
 					<li class="menu--item">
-						<a href="instructor_notifications.html" class="menu--link" title="Notifications">
-						  <i class='uil uil-bell menu--icon'></i>
-						  <span class="menu--label">Notifications</span>
-						</a>
-					</li>
-					<li class="menu--item">
-						<a href="instructor_my_certificates.html" class="menu--link" title="My Certificates">
-						  <i class='uil uil-award menu--icon'></i>
-						  <span class="menu--label">My Certificates</span>
-						</a>
-					</li>
-					<li class="menu--item">
-						<a href="instructor_all_reviews.html" class="menu--link" title="Reviews">
+						<a href="{{ url('instructor/reviews') }}" class="menu--link {{ \Request::is('instructor/reviews') ? 'active' : ''}}" title="Reviews">
 						  <i class='uil uil-star menu--icon'></i>
 						  <span class="menu--label">Reviews</span>
 						</a>
 					</li>
 					<li class="menu--item">
-						<a href="instructor_earning.html" class="menu--link" title="Earning">
+						<a href="{{ url('instructor/earning') }}" class="menu--link {{ \Request::is('instructor/earning') ? 'active' : ''}}" title="Earning">
 						  <i class='uil uil-dollar-sign menu--icon'></i>
 						  <span class="menu--label">Earning</span>
 						</a>
 					</li>
 					<li class="menu--item">
-						<a href="instructor_payout.html" class="menu--link" title="Payout">
+						<a href="{{ url('instructor/payout') }}" class="menu--link {{ \Request::is('instructor/payout') ? 'active' : ''}}" title="Payout">
 						  <i class='uil uil-wallet menu--icon'></i>
 						  <span class="menu--label">Payout</span>
 						</a>
 					</li>
 					<li class="menu--item">
-						<a href="instructor_statements.html" class="menu--link" title="Statements">
+						<a href="{{ url('instructor/statements') }}" class="menu--link {{ \Request::is('instructor/statements') ? 'active' : ''}}" title="Statements">
 						  <i class='uil uil-file-alt menu--icon'></i>
 						  <span class="menu--label">Statements</span>
-						</a>
-					</li>
-					<li class="menu--item">
-						<a href="instructor_verification.html" class="menu--link" title="Verification">
-						  <i class='uil uil-check-circle menu--icon'></i>
-						  <span class="menu--label">Verification</span>
 						</a>
 					</li>
 				</ul>

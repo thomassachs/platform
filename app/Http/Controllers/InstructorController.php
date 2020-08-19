@@ -38,7 +38,7 @@ class InstructorController extends Controller
 
     public function instructor()
     {
-        return view('instructor');
+        return view('instructor.dashboard');
     }
 
     public function myCourses()
@@ -153,6 +153,32 @@ class InstructorController extends Controller
             return redirect('/instructor/mycourses');
         }
     }
+
+    public function analytics()
+    {
+        return view('instructor.analytics');
+    }
+
+    public function reviews()
+    {
+        return view('instructor.reviews');
+    }
+
+    public function earning()
+    {
+        return view('instructor.earning');
+    }
+
+    public function payout()
+    {
+        return view('instructor.payout');
+    }
+
+    public function statements()
+    {
+        return view('instructor.statements');
+    }
+
 
 
 }

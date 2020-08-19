@@ -51,6 +51,18 @@ Route::get('/instructor/edit/{id}/pricing', 'InstructorController@editPrice')->m
 
 Route::get('/instructor/edit/{id}/submit', 'InstructorController@submitCourse')->middleware('isPending');
 
+Route::get('/instructor/analytics', 'InstructorController@analytics');
+
+Route::get('/instructor/reviews', 'InstructorController@reviews');
+
+Route::get('/instructor/earning', 'InstructorController@earning');
+
+Route::get('/instructor/payout', 'InstructorController@payout');
+
+Route::get('/instructor/statements', 'InstructorController@statements');
+
+Route::get('/instructor/mycourses', 'InstructorController@myCourses');
+
 
 // courses routes
 Route::get('/course/{courseName}', 'PagesController@coursePage');

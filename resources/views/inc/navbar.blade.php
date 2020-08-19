@@ -56,9 +56,13 @@
                                 <a href="" class="upload_btn" data-toggle="modal" data-target="#becomeInstructorModal">Become Instructor</a>
                             </li>
 
-                        @elseif(Auth::user()->instructor == 1)
+                        @elseif(Auth::user()->instructor == 1 && !(\Request::is('instructor/*') || \Request::is('instructor')))
                             <li>
                                 <a class="upload_btn" href="{{ url('/instructor') }}">Instructor</a>
+                            </li>
+                        @else
+                            <li>
+                                <a class="upload_btn" href="{{ url('/') }}">Student</a>
                             </li>
                         @endif
 
@@ -78,12 +82,12 @@
         								<img src="images/hd_dp.jpg" alt="">
         								<div class="pd_content">
         									<div class="rhte85">
-        										<h6>Joginder Singh</h6>
+        										<h6>{{ Auth::user()->name }}</h6>
         										<div class="mef78" title="Verify">
         											<i class='uil uil-check-circle'></i>
         										</div>
         									</div>
-        									<span>gambol943@gmail.com</span>
+        									<span>{{ Auth::user()->email }}</span>
         								</div>
         							</div>
         							<a href="my_instructor_profile_view.html" class="dp_link_12">View Instructor Profile</a>

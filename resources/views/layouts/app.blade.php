@@ -30,6 +30,7 @@
 	<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/night-mode.css') }}" rel="stylesheet">
+    @yield('stylesheets')
 
 	<!-- Vendor Stylesheets -->
 	<link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
@@ -56,11 +57,11 @@
     @yield('content')
 
 
-    <main class="mt-5">
+    <main class="">
         @yield('instructorContent')
     </main>
 
-    <main class="mt-5">
+    <main class="">
         @yield('adminContent')
     </main>
 
@@ -74,5 +75,6 @@
 	<script src="{{ asset('vendor/semantic/semantic.min.js') }}"></script>
 	<script src="{{ asset('js/custom.js') }}"></script>
 	<script src="{{ asset('js/night-mode.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>
