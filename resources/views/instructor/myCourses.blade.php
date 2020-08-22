@@ -68,9 +68,9 @@
 												</tr>
 											</thead>
 											<tbody>
-                                                @foreach ($courses as $course)
+                                                @foreach ($courses as $key=>$course)
     												<tr>
-                                                        <td class="text-center">1</td>
+                                                        <td class="text-center">{{ $key + 1}}</td>
     													<td class="cell-ta"><div class="thumb_img"><img src="{{ config('app.storage') }}/courses/{{ $course->status }}/{{ $course->storageName }}/{{ $course->imagePath }}" alt=""></div></td>
     													<td>{{ $course->title }}</td>
     													<td class="text-center">{{ date('d M Y', strtotime($course->created_at)) }}</td>
