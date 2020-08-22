@@ -23,7 +23,7 @@
     							<div class="card_dash_left">
     								<h5>Total Sales</h5>
     								<h2>${{ $totalSales }}</h2>
-    								<span class="crdbg_1">New $50</span>
+    								<span class="crdbg_1">New $0</span>
     							</div>
     							<div class="card_dash_right">
     								<img src="images/dashboard/achievement.svg" alt="">
@@ -35,7 +35,7 @@
     							<div class="card_dash_left">
     								<h5>Total Enroll</h5>
     								<h2>{{ $totalEnroll}}</h2>
-    								<span class="crdbg_2">New 125</span>
+    								<span class="crdbg_2">New 0</span>
     							</div>
     							<div class="card_dash_right">
     								<img src="images/dashboard/graduation-cap.svg" alt="">
@@ -47,7 +47,7 @@
     							<div class="card_dash_left">
     								<h5>Total Courses</h5>
     								<h2>{{ count($user->courses) }}</h2>
-    								<span class="crdbg_3">New 5</span>
+    								<span class="crdbg_3">New 0</span>
     							</div>
     							<div class="card_dash_right">
     								<img src="images/dashboard/online-course.svg" alt="">
@@ -58,8 +58,8 @@
     						<div class="card_dash">
     							<div class="card_dash_left">
     								<h5>Total Students</h5>
-    								<h2>2650</h2>
-    								<span class="crdbg_4">New 245</span>
+    								<h2>0</h2>
+    								<span class="crdbg_4">New 0</span>
     							</div>
     							<div class="card_dash_right">
     								<img src="images/dashboard/knowledge.svg" alt="">
