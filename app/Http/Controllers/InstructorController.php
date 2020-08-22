@@ -45,9 +45,9 @@ class InstructorController extends Controller
     {
         // $user_id = auth()->user()->id;
         // $user = User::find($user_id)->paginate();
-        $courses = Course::where('user_id', Auth::id())
+        $courses = Course::where('user_id', '=' , Auth::id())
                         ->orderBy('updated_at', 'desc')
-                        ->paginate(3);
+                        ->paginate(500);
 
         return view('instructor.myCourses')->with('courses', $courses);
     }

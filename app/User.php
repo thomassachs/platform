@@ -49,7 +49,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function boughtCourses()
     {
-        return $this->hasMany('App\Payment')->course;
+        return $this->belongsToMany('App\Course', 'payments');
     }
 
 

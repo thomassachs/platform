@@ -31,13 +31,10 @@
     <h2>My Courses:</h2>
 
     <div class="">
-        @foreach ($user->payments as $payment)
+        @foreach ($user->boughtCourses as $course)
             <br>
-            <h5>{{ $payment->course->title }}</h5>
-            <br>
-            @foreach ($payment->course->sections as $section)
-                {{-- {{ $section->name }} --}}
-            @endforeach
+            <h5>{{ $course->title }}</h5>
+
             <br>
         @endforeach
     </div>

@@ -10,9 +10,9 @@
 						</a>
 					</li>
 					<li class="menu--item">
-						<a href="live_streams.html" class="menu--link" title="Live Streams">
+						<a href="{{ url('/mycourses') }}" class="menu--link" title="Live Streams">
 							<i class='uil uil-kayak menu--icon'></i>
-							<span class="menu--label">Live Streams</span>
+							<span class="menu--label">My Courses</span>
 						</a>
 					</li>
 					<li class="menu--item">

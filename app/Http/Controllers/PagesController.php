@@ -29,4 +29,10 @@ class PagesController extends Controller
         return view('courseCheckout')->with('course', $course);
     }
 
+    public function myCourses()
+    {
+
+        return view('user/mycourses');
+    }
+
 }

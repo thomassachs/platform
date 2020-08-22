@@ -54,14 +54,14 @@
     															<div class="mt-30 lbel25">
     																<label>Language*</label>
     															</div>
-                                                                {!!  Form::select('language',['english' => 'English','german' => 'German'],null,
+                                                                {!!  Form::select('language',['English' => 'English','German' => 'German'],null,
                                                                     ['class'=>'ui hj145 dropdown cntry152 prompt srch_explore','placeholder'=>'Select Language']) !!}
     														</div>
     														<div class="col-lg-4 col-md-6">
     															<div class="mt-30 lbel25">
     																<label>Name of the Game*</label>
     															</div>
-                                                                {!!  Form::select('game',['leagueoflegends' => 'League of Legends','legendsofruneterra' => 'Legends of Runeterra'],null,
+                                                                {!!  Form::select('game',['League of Legends' => 'League of Legends','Legends of Runeterra' => 'Legends of Runeterra'],null,
                                                                     ['class'=>'ui hj145 dropdown cntry152 prompt srch_explore','placeholder'=>'Select Language']) !!}
     														</div>
     														<div class="col-lg-4 col-md-6">

@@ -27,6 +27,9 @@ Route::get('/account', 'HomeController@index')->name('account');
 
 Route::get('/zwischenspeicherblade', 'HomeController@zwischenspeicher');
 
+// user routes
+Route::get('/mycourses', 'PagesController@myCourses');
+
 
 // instructor routes
 Route::get('/instructor', 'InstructorController@instructor');
