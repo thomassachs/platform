@@ -74,7 +74,7 @@
     													<td class="cell-ta"><div class="thumb_img"><img src="{{ config('app.storage') }}/courses/{{ $course->status }}/{{ $course->storageName }}/{{ $course->imagePath }}" alt=""></div></td>
     													<td>{{ $course->title }}</td>
     													<td class="text-center">{{ date('d M Y', strtotime($course->created_at)) }}</td>
-    													<td class="text-center">0 (dummy content)</td>
+    													<td class="text-center">{{ count($course->payments) }}</td>
     													<td class="text-center">{{ count($course->lectures) }}</td>
     													<td class="text-center"><a href="#">{{ $course->game }}</a></td>
     													<td class="text-center"><b class="course_active">{{ $course->status }}</b></td>

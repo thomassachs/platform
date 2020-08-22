@@ -38,7 +38,24 @@ class InstructorController extends Controller
 
     public function instructor()
     {
-        return view('instructor.dashboard');
+        $userId = Auth::id();
+        $user = User::find($userId);
+
+        $totalEnroll = 0;
+        $totalSales = 0;
+
+        foreach ($user->courses as $course) {
+            foreach($course->payments as $payment){
+                $totalEnroll++;
+                $totalSales += $payment->amount;
+            }
+        }
+
+        return view('instructor.dashboard')->with(compact(
+            'user',
+            'totalEnroll',
+            'totalSales'
+        ));
     }
 
     public function myCourses()
